@@ -1,4 +1,4 @@
-~/bin/bunnyfetch
+bunnyfetch
 
 set_color green
 printf "There is"
@@ -22,7 +22,7 @@ function fish_greeting
 end
 
 abbr SS "sudo systemctl"
-abbr fcf "vim ~/.config/fish/config.fish"
+abbr fcf "vim ~/dotfiles/.config/fish/config.fish"
 abbr sfcf ". ~/.config/fish/config.fish"
 abbr sysup "sudo apt update && sudo apt upgrade"
 abbr get "sudo apt install"
