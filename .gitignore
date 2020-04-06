@@ -21,3 +21,5 @@ user-dirs.dirs
 user-dirs.locale
 xfce4
 .config/configstore
+.config/.oh-my-zsh
+.zcompdump-kali-5.8
