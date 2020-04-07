@@ -105,6 +105,8 @@ source $ZSH/oh-my-zsh.sh
 alias szsh=" source ~/.config/zsh/.zshrc"
 alias ezsh=" vim ~/.config/zsh/.zshrc"
 alias ll=" ls -la"
+alias get=" sudo apt install"
+alias SS=" sudo systemctl"
 
 bunnyfetch
 
