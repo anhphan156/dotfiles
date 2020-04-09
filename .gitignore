@@ -1,4 +1,14 @@
 binwalk
+Code/
+balena-etcher-electron/
+fontforge/
+gnome-boxes/
+gnome-initial-setup-done
+libreoffice/
+libvirt/
+mimeapps.list
+.config/zsh/.zcompdump-anh-5.8
+.config/zsh/.zcompdump-localhost-5.8
 .config/.config
 dconf
 evolution
@@ -23,3 +33,6 @@ xfce4
 .config/configstore
 .config/.oh-my-zsh
 .zcompdump-kali-5.8
+.config/dleyna-renderer-service.conf
+.config/monitors.xml~
+
