@@ -35,4 +35,8 @@ xfce4
 .zcompdump-kali-5.8
 .config/dleyna-renderer-service.conf
 .config/monitors.xml~
+.config/Slack/
+.config/enchant/
+.config/gedit/
+.config/qutebrowser/
 
