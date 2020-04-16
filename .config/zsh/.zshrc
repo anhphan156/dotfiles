@@ -102,14 +102,19 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+compinit -d ~/.cache/zsh/zcompdump-$ZSH_VERSION
+
 alias szsh=" source ~/.config/zsh/.zshrc"
 alias ezsh=" vim ~/.config/zsh/.zshrc"
 alias ll=" ls -la"
-alias get=" sudo apt install"
+alias get=" sudo pacman -S"
+alias update=" sudo pacman -Syu"
 alias SS=" sudo systemctl"
+alias bat=" upower -i `upower -e | grep BAT`"
 
 # bunnyfetch
-neofetch --kitty Pictures/Lockscreens/A2.png
+neofetch --kitty ~/Pictures/Lockscreens/A2.png
 
 GREEN='\033[0;32m'
 RED='\033[0;31m'

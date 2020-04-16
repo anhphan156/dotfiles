@@ -39,4 +39,6 @@ xfce4
 .config/enchant/
 .config/gedit/
 .config/qutebrowser/
-
+.config/.zshrc.pre-oh-my-zsh
+.config/gtk-2.0/
+.config/zsh/.zcompdump
