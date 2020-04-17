@@ -42,3 +42,6 @@ xfce4
 .config/.zshrc.pre-oh-my-zsh
 .config/gtk-2.0/
 .config/zsh/.zcompdump
+.config/wgetrc
+.config/.gitconfig
+.config/git/
