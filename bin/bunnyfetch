@@ -27,7 +27,7 @@ k=
 kernel="$(uname -r | cut -d '-' -f1)"
 
 r=
-resolution="$(xwininfo -root | grep geometry | awk '{print $2}' | cut -d + -f1)"
+resolution="$(upower -i `upower -e | grep BAT` | grep percentage: | awk '{print $2}')"
 
 sh=
 shell=$(basename $SHELL)

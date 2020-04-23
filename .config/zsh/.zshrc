@@ -115,8 +115,10 @@ alias bat=" upower -i `upower -e | grep BAT`"
 alias tmux=" tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf"
 alias wget=" wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
 
-# bunnyfetch
-neofetch --kitty ~/Pictures/Lockscreens/A2.png
+clear
+pfetch
+#bunnyfetch
+#neofetch --kitty ~/Pictures/Lockscreens/A2.png
 
 GREEN='\033[0;32m'
 RED='\033[0;31m'
