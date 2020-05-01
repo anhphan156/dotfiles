@@ -1,0 +1,13 @@
+browser "firefox"
+auto-reload yes
+
+bind-key j down
+bind-key k up
+bind-key l open
+bind-key h quit
+
+color listnormal magenta default
+color listfocus black magenta standout bold
+color listnormal_unread blue default
+color listfocus_unread black green standout bold
+color info white black

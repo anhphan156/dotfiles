@@ -70,8 +70,8 @@ ZSH_THEME="anh"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
 	git
-	zsh-syntax-highlighting
 	vi-mode
+	zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -116,8 +116,8 @@ alias tmux=" tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf"
 alias wget=" wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
 
 clear
-pfetch
-#bunnyfetch
+#pfetch
+bunnyfetch
 #neofetch --kitty ~/Pictures/Lockscreens/A2.png
 
 GREEN='\033[0;32m'
