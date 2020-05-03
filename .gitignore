@@ -47,3 +47,5 @@ xfce4
 .config/git/
 .config/Code - OSS/
 .config/discord/
+.config/QtProject.conf
+.config/keepassxc/
