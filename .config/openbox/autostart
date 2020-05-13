@@ -1,0 +1,8 @@
+# tap
+xinput set-prop 12 334 1 &
+
+# natural scroll
+xinput set-prop 12 342 1 &
+
+# desktop background
+feh --bg-center /home/anh/Pictures/Wallpapers/142187.jpg &
