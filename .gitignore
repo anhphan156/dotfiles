@@ -52,3 +52,8 @@ xfce4
 .config/gtk-4.0/
 .config/yelp/
 .config/zsh/.zcompdump-asus-5.8
+.config/dleyna-server-service.conf
+.config/google-chrome/
+.config/menus/
+.config/nvidia/
+.vim/bundle

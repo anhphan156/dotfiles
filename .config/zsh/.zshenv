@@ -29,4 +29,7 @@ export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 
 export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 
-#export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
+export JAVA_HOME=/usr/local/java/jdk-11.0.7+10
+
+export PATH=$PATH:$JAVA_HOME/bin
+
