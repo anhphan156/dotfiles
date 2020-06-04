@@ -57,3 +57,4 @@ xfce4
 .config/menus/
 .config/nvidia/
 .vim/bundle
+.config/tmux-themepack/
