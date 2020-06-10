@@ -58,3 +58,6 @@ xfce4
 .config/nvidia/
 .vim/bundle
 .config/tmux-themepack/
+.config/totem/
+.config/zsh/.z
+.vim/viminfo

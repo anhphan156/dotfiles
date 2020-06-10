@@ -72,6 +72,9 @@ plugins=(
 	git
 	vi-mode
 	zsh-syntax-highlighting
+	#zsh-autosuggestions
+	tmux
+	z
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -104,6 +107,9 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 #compinit -d ~/.cache/zsh/zcompdump-$ZSH_VERSION
+
+#ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=006,bold"
+#ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 alias szsh=" source ~/.config/zsh/.zshrc"
 alias ezsh=" vim ~/.config/zsh/.zshrc"

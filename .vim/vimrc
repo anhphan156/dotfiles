@@ -27,6 +27,11 @@ Plugin 'jiangmiao/auto-pairs'
 
 Plugin 'preservim/nerdcommenter'
 
+Plugin 'benmills/vimux'
+
+Plugin 'ycm-core/YouCompleteMe'
+
+Plugin 'sheerun/vim-polyglot'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -43,16 +48,10 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-syntax on
-"set t_Co=256
-" set cursorline
-" colorscheme nord
-" let g:airline_theme='onehalflight'
-" lightline
-" let g:lightline.colorscheme='onehalfdark'
 
 let g:airline_theme='deus'
 let g:airline#extensions#tabline#enabled = 1
+
 
 " air-line
 let g:airline_powerline_fonts = 1
@@ -84,9 +83,21 @@ let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 
+" File Structure
+set viminfo+=n~/.vim/viminfo
 
+" Appearance
+syntax on
+" set t_Co=256
+" set cursorline
+" colorscheme nord
+" let g:airline_theme='onehalflight'
+" lightline
+" let g:lightline.colorscheme='onehalfdark'
 hi VertSplit cterm=none
 "hi StatusLine ctermbg=5 ctermfg=0
+
+highlight Pmenu ctermbg=001
 
 " Line number hybrid
 set nu rnu
@@ -96,6 +107,13 @@ set autoindent
 set smartindent
 set tabstop=4
 set shiftwidth=4
+
+"--------
+" Abbreviations
+"--------
+
+" ret = return
+iabbrev ret return
 
 "--------
 " Mapping
@@ -110,11 +128,26 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 " Exit insert mode
 inoremap jk <esc>
 
-" Delete line without putting into buffer
+" Delete line without putting into "1 register
 nnoremap \d "_dd
+
+" Paste the last yanked
+nnoremap \p "0p
 
 " Save file in normal mod
 nnoremap <leader>w :w<cr>
+
+" Select word
+nnoremap <space> viw
+
+" Quote
+nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
+nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
+vnoremap <leader>" <esc>`>a"<esc>`<i"<esc>`>2l
+vnoremap <leader>' <esc>`>a'<esc>`<i'<esc>`>2l
+vnoremap <leader>( <esc>`>a)<esc>`<i(<esc>`>2l
+vnoremap <leader>{ <esc>`>a}<esc>`<i{<esc>`>2l
+vnoremap <leader>[ <esc>`>a]<esc>`<i[<esc>`>2l
 
 let g:python_highlight_all = 1
 
@@ -125,3 +158,16 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 autocmd vimenter * NERDTree
 autocmd VimEnter * wincmd p
+
+"Vimux
+let g:VimuxRunnerIndex = 1
+nnoremap <Leader>vi :VimuxInspectRunner<CR>
+nnoremap <Leader>vp :VimuxPromptCommand<CR>
+nnoremap <Leader>vm :VimuxPromptCommand(" make ")<CR>
+nnoremap <Leader>vr :VimuxRunCommand(" make clean > /dev/null && make > /dev/null && ./app")<CR>
+
+"YouCompleteMe
+let g:ycm_clangd_binary_path = "/usr/bin/clangd"
+let g:ycm_autoclose_preview_window_after_completion = 1
+
+set signcolumn=no
