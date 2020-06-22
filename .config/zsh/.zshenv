@@ -34,3 +34,5 @@ export JAVA_HOME=/usr/local/java/jdk-11.0.7+10
 export PATH=$PATH:$JAVA_HOME/bin
 
 export _Z_DATA=$XDG_DATA_HOME/zsh/.z
+
+export ELECTRUMDIR="$XDG_DATA_HOME/electrum"

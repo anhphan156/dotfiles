@@ -61,3 +61,5 @@ xfce4
 .config/totem/
 .config/zsh/.z
 .vim/viminfo
+.config/Exodus/
+.vim/viminfo.tmp

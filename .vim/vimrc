@@ -10,28 +10,40 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+" Themes
 Plugin 'sonph/onehalf', {'rtp': 'vim/'}
-
 Plugin 'arcticicestudio/nord-vim'
 
-Plugin 'preservim/nerdtree'
-
-Plugin 'davidhalter/jedi-vim'
-
-Plugin 'vim-python/python-syntax'
-
+" Vim status line theme
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
+
+Plugin 'ycm-core/YouCompleteMe'
+
+" Python completer
+Plugin 'davidhalter/jedi-vim'
+
+" C syntax highlighting
+Plugin 'sheerun/vim-polyglot'
+
+Plugin 'vim-python/python-syntax'
+
+Plugin 'lervag/vimtex'
+
+"Plugin 'vbe0201/vimdiscord'
+
 Plugin 'jiangmiao/auto-pairs'
+
+Plugin 'preservim/nerdtree'
 
 Plugin 'preservim/nerdcommenter'
 
 Plugin 'benmills/vimux'
 
-Plugin 'ycm-core/YouCompleteMe'
+Plugin 'mhinz/vim-startify'
 
-Plugin 'sheerun/vim-polyglot'
+Plugin 'junegunn/fzf'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -49,12 +61,11 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 
-let g:airline_theme='deus'
-let g:airline#extensions#tabline#enabled = 1
-
-
 " air-line
 let g:airline_powerline_fonts = 1
+
+let g:airline_theme='deus'
+let g:airline#extensions#tabline#enabled = 1
 
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
@@ -108,6 +119,9 @@ set smartindent
 set tabstop=4
 set shiftwidth=4
 
+
+set signcolumn=no
+
 "--------
 " Abbreviations
 "--------
@@ -149,25 +163,30 @@ vnoremap <leader>( <esc>`>a)<esc>`<i(<esc>`>2l
 vnoremap <leader>{ <esc>`>a}<esc>`<i{<esc>`>2l
 vnoremap <leader>[ <esc>`>a]<esc>`<i[<esc>`>2l
 
-let g:python_highlight_all = 1
+" FZF
+nnoremap <C-p> :FZF<CR>
 
-"Nerd Tree
-map <C-n> :NERDTreeToggle<CR>
+" Nerd Tree Maps
+nnoremap <C-n> :NERDTreeToggle<CR>
 
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-autocmd vimenter * NERDTree
-autocmd VimEnter * wincmd p
-
-"Vimux
-let g:VimuxRunnerIndex = 1
+" Vimux Maps
 nnoremap <Leader>vi :VimuxInspectRunner<CR>
 nnoremap <Leader>vp :VimuxPromptCommand<CR>
 nnoremap <Leader>vm :VimuxPromptCommand(" make ")<CR>
 nnoremap <Leader>vr :VimuxRunCommand(" make clean > /dev/null && make > /dev/null && ./app")<CR>
 
+" Python
+let g:python_highlight_all = 1
+
+"Vimux
+let g:VimuxRunnerIndex = 1
+
 "YouCompleteMe
 let g:ycm_clangd_binary_path = "/usr/bin/clangd"
 let g:ycm_autoclose_preview_window_after_completion = 1
 
-set signcolumn=no
+"Nerd Tree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+autocmd vimenter * NERDTree
+autocmd VimEnter * wincmd p
