@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [[ $1 == "" ]]
+then
+	location="./"
+elif [[ $1 != */ ]]
+then
+	location="$1/"
+else
+	location=$1
+fi
+
+target=$(find $location 2> /dev/null | fzf --preview="cat {}" --preview-window=right:70%:wrap) 
+
+[[ $target != "" ]] && vim $target

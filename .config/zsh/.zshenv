@@ -31,8 +31,11 @@ export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 
 export JAVA_HOME=/usr/local/java/jdk-11.0.7+10
 
-export PATH=$PATH:$JAVA_HOME/bin
-
 export _Z_DATA=$XDG_DATA_HOME/zsh/.z
 
 export ELECTRUMDIR="$XDG_DATA_HOME/electrum"
+
+export FZF_DEFAULT_COMMAND=' ag --hidden --ignore .git -g ""'
+
+export PATH=$PATH:$JAVA_HOME/bin
+export PATH=$PATH:$HOME/Documents/dotfiles/bin

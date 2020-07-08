@@ -63,3 +63,6 @@ xfce4
 .vim/viminfo
 .config/Exodus/
 .vim/viminfo.tmp
+.vim/session/
+.config/com.github.johnfactotum.Foliate/
+

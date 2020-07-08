@@ -122,8 +122,14 @@ alias tmux=" tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf"
 alias wget=" wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
 alias nvidia-settings=" nvidia-settings --config="$XDG_CONFIG_HOME"/nvidia/settings"
 alias tcb=" xclip -selection clipboard"
-alias vimf=' vim $(fzf --preview="cat {}" --preview-window=right:70%:wrap)'
 
+unalias z 2> /dev/null
+z() {
+  [ $# -gt 0 ] && _z "$*" && return
+  cd "$(_z -l 2>&1 | fzf --height 40% --nth 2.. --reverse --inline-info +s --tac --query "${*##-* }" | sed 's/^[0-9,.]* *//')"
+}
+
+#============== Greetings ==================
 #clear
 #pfetch
 #bunnyfetch
