@@ -88,7 +88,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
+	export EDITOR='vim'
 # else
 #   export EDITOR='mvim'
 # fi
@@ -119,7 +119,7 @@ alias ll=" ls -la"
 alias SS=" sudo systemctl"
 #alias bat=" upower -i `upower -e | grep BAT`"
 alias tmux=" tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf"
-alias wget=" wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
+#alias wget=" wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
 alias nvidia-settings=" nvidia-settings --config="$XDG_CONFIG_HOME"/nvidia/settings"
 alias tcb=" xclip -selection clipboard"
 
@@ -130,10 +130,10 @@ z() {
 }
 
 #============== Greetings ==================
-#clear
-#pfetch
+clear
+pfetch
 #bunnyfetch
-neofetch --kitty ~/Pictures/Lockscreens/A2.png
+#neofetch --kitty ~/Pictures/Lockscreens/A2.png
 
 GREEN='\033[0;32m'
 RED='\033[0;31m'

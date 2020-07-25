@@ -1,8 +1,22 @@
-# tap
-xinput set-prop 12 334 1 &
+#
+# These things are run when an Openbox X Session is started.
+# You may place a similar script in $HOME/.config/openbox/autostart
+# to run user-specific things.
+#
 
-# natural scroll
-xinput set-prop 12 342 1 &
+# If you want to use GNOME config tools...
+#
+#if test -x /usr/lib/openbox/gnome-settings-daemon >/dev/null; then
+#  /usr/lib/openbox/gnome-settings-daemon &
+#elif which gnome-settings-daemon >/dev/null 2>&1; then
+#  gnome-settings-daemon &
+#fi
 
-# desktop background
-feh --bg-center /home/anh/Pictures/Wallpapers/142187.jpg &
+# If you want to use XFCE config tools...
+#
+#xfce-mcs-manager &
+
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1&
+picom&
+nitrogen --restore &
+#feh --bg-fill ~/.config/openbox/background.jpg

@@ -11,8 +11,8 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " Themes
-Plugin 'sonph/onehalf', {'rtp': 'vim/'}
-Plugin 'arcticicestudio/nord-vim'
+"Plugin 'sonph/onehalf', {'rtp': 'vim/'}
+"Plugin 'arcticicestudio/nord-vim'
 
 " Vim status line theme
 Plugin 'vim-airline/vim-airline'
@@ -31,7 +31,7 @@ Plugin 'vim-python/python-syntax'
 
 Plugin 'lervag/vimtex'
 
-Plugin 'vbe0201/vimdiscord'
+"Plugin 'vbe0201/vimdiscord'
 
 Plugin 'jiangmiao/auto-pairs'
 
