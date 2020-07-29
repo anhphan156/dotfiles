@@ -98,6 +98,7 @@ let g:airline_symbols.linenr = ''
 
 " File Structure
 set viminfo+=n~/.vim/viminfo
+set directory=$XDG_DATA_HOME/vim/swap
 
 " Appearance
 syntax on
@@ -175,7 +176,9 @@ vnoremap <leader>{ <esc>`>a}<esc>`<i{<esc>`>2l
 vnoremap <leader>[ <esc>`>a]<esc>`<i[<esc>`>2l
 
 " FZF
-nnoremap <C-p> :FZF<CR>
+nnoremap <C-p> :call fzf#run({'sink': 'e', 'options': '--preview="bat --style=numbers,changes --color always {}" --preview-window=left:70%'})<CR>
+nnoremap <leader>f :BLines<CR>
+nnoremap <leader>r :Rg<CR>
 
 " Nerd Tree Maps
 nnoremap <C-n> :NERDTreeToggle<CR>

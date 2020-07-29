@@ -40,3 +40,5 @@ export FZF_DEFAULT_COMMAND=' ag --hidden --ignore .git -g ""'
 export PATH=$PATH:$JAVA_HOME/bin
 export PATH=$PATH:$HOME/Documents/dotfiles/bin
 export PF_INFO="ascii title os host kernel pkgs memory shell editor wm palette"
+
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
