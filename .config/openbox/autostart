@@ -19,4 +19,6 @@
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1&
 picom&
 nitrogen --restore &
+urxvt -e neomutt&
+xpad -s
 #feh --bg-fill ~/.config/openbox/background.jpg

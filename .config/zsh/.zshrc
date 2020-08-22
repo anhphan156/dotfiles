@@ -110,6 +110,9 @@ source $ZSH/oh-my-zsh.sh
 
 #ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=006,bold"
 #ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+autoload -Uz compinit
+compinit
+kitty + complete setup zsh | source /dev/stdin
 
 alias szsh=" source ~/.config/zsh/.zshrc"
 alias ezsh=" vim ~/.config/zsh/.zshrc"

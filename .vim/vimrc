@@ -18,7 +18,6 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
-
 Plugin 'ycm-core/YouCompleteMe'
 
 " Python completer
@@ -29,7 +28,7 @@ Plugin 'sheerun/vim-polyglot'
 
 Plugin 'vim-python/python-syntax'
 
-Plugin 'lervag/vimtex'
+"Plugin 'lervag/vimtex'
 
 "Plugin 'vbe0201/vimdiscord'
 
@@ -40,6 +39,8 @@ Plugin 'preservim/nerdtree'
 Plugin 'preservim/nerdcommenter'
 
 Plugin 'benmills/vimux'
+Plugin 'anhphan156/kittyvim'
+"Plugin 'file:///home/anh/Documents/Code/Projects/kittyvim'
 
 Plugin 'mhinz/vim-startify'
 
@@ -184,10 +185,16 @@ nnoremap <leader>r :Rg<CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
 
 " Vimux Maps
-nnoremap <Leader>vi :VimuxInspectRunner<CR>
-nnoremap <Leader>vp :VimuxPromptCommand<CR>
-nnoremap <Leader>vm :VimuxPromptCommand(" make ")<CR>
-nnoremap <Leader>vr :VimuxRunCommand(" make clean > /dev/null && make > /dev/null && ./app")<CR>
+nnoremap <Leader>ci :VimuxInspectRunner<CR>
+nnoremap <Leader>cp :VimuxPromptCommand<CR>
+nnoremap <Leader>cm :VimuxPromptCommand(" make ")<CR>
+nnoremap <Leader>cr :VimuxRunCommand(" make clean > /dev/null && make > /dev/null && make run")<CR>
+
+" Kittyvim maps
+nnoremap <leader>vs :KittyvimSpawn<CR>
+nnoremap <Leader>vp :KittyvimPrompt<CR>
+nnoremap <Leader>vm :KittyvimRun(" make")<CR>
+nnoremap <Leader>vr :KittyvimRun(" make clean > /dev/null && make > /dev/null && make run")<CR>
 
 " Python
 let g:python_highlight_all = 1

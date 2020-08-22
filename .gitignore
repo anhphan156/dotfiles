@@ -70,3 +70,11 @@ xfce4
 .config/pavucontrol.ini
 .config/pavucontrol.ini.5HJ3N0
 .config/nitrogen/
+.config/vlc/
+.config/wireshark/
+.config/Postman/
+.config/bashtop/
+.config/pki/
+.config/xpad/
+.config/neomutt/
+.config/autostart/

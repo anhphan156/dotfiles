@@ -8,8 +8,9 @@ Xft.hintstyle: hintfull
 Xft.lcdfilter: lcddefault
 ! ======= urxvt =======
 URxvt.scrollBar: off
-URxvt.internalBorder:     22
+URxvt.internalBorder:     25
 URxvt.letterSpace: 0
+URxvt.font: xft:Anka/Coder:size=12
 ! =================
 *background:	#1D1F28
 *foreground:	#FDFDFD

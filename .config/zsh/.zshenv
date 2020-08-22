@@ -42,3 +42,5 @@ export PATH=$PATH:$HOME/Documents/dotfiles/bin
 export PF_INFO="ascii title os host kernel pkgs memory shell editor wm palette"
 
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
+export CARGO_HOME="$XDG_DATA_HOME"/cargo

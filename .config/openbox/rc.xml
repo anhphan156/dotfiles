@@ -178,9 +178,19 @@
   </dock>
   <keyboard>
     <chainQuitKey>C-g</chainQuitKey>
-    <keybind key="W-Return">
+	<keybind key="W-Return">
+	  <action name="Execute">
+		<command>kitty</command>
+	  </action>
+	</keybind>
+	<keybind key="W-j">
+	  <action name="Execute">
+		  <command>python /home/anh/Documents/Code/Projects/YodaMe/yoda.py</command>
+	  </action>
+	</keybind>
+    <keybind key="A-Return">
       <action name="Execute">
-        <command>kitty</command>
+        <command>kitty -o background_image=none</command>
       </action>
     </keybind>
     <keybind key="A-space">
@@ -697,6 +707,9 @@
   </menu>
   <applications>
     <application name="kitty">
+      <decor>no</decor>
+    </application>
+    <application name="urxvt">
       <decor>no</decor>
     </application>
     <!--
