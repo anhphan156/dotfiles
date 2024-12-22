@@ -34,7 +34,7 @@
 					(icon
 						:icon_path "${icon_base_path}/${item.icon}"
 						:is_alive "${item.alive}"
-						:process_name "firefox")))))))
+						:process_name "${item.class}")))))))
 
 (defwidget icon [icon_path is_alive process_name]
 	(eventbox
@@ -43,7 +43,7 @@
 			:orientation "v"
 			:space-evenly "true"
 			(button
-				:onclick {is_alive ? "hyprctl dispatch focuswindow ${process_name}" : process_name}
+				:onclick "hyprctl dispatch focuswindow ${process_name}; eww update revealdock=false"
 				(image 
 					:class "dockicons"
 					:path icon_path
