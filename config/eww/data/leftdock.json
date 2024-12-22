@@ -1,0 +1,26 @@
+[
+	{
+		"id": "0",
+		"class":"firefox",
+		"icon":"firefox.png",
+		"alive": false
+	},
+	{
+		"id": "0",
+		"class":"vesktop",
+		"icon":"discord.png",
+		"alive": false
+	},
+	{
+		"id": "0",
+		"class":"nemo",
+		"icon":"filemanager.png",
+		"alive": false
+	},
+	{
+		"id": "0",
+		"class":"kitty",
+		"icon":"terminal_emulator.png",
+		"alive": false
+	}
+]

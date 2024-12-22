@@ -16,14 +16,11 @@
 	(dock))
 
 (defvar revealdock "false")
-(defvar icon1 "false")
-(defvar icon2 "false")
-(defvar icon3 "false")
-(defvar icon4 "false")
+(defvar items "[]")
 
 (defwidget dock []
 	(eventbox
-		:onhover "leftdockcheck"
+		:onhover "eww update revealdock=true"
 		:onhoverlost "eww update revealdock=false"
 		(box
 		:class "pr10"
@@ -33,36 +30,25 @@
 			(box 
 				:orientation "v"
 				:class "dockbackground"
-				(icon
-					:icon_path "${icon_base_path}/firefox.png"
-					:icon_num icon1
-					:process_name "firefox")
-				(icon
-					:icon_path "${icon_base_path}/discord.png"
-					:icon_num icon2
-					:process_name "discord")
-				(icon
-					:icon_path "${icon_base_path}/filemanager.png"
-					:icon_num icon3
-					:process_name "nemo")
-				(icon
-					:icon_path "${icon_base_path}/terminal_emulator.png"
-					:icon_num icon4
-					:process_name "kitty"))))))
+				(for item in items
+					(icon
+						:icon_path "${icon_base_path}/${item.icon}"
+						:is_alive "${item.alive}"
+						:process_name "firefox")))))))
 
-(defwidget icon [icon_path icon_num process_name]
+(defwidget icon [icon_path is_alive process_name]
 	(eventbox
 		:class "zoom"
 		(box
 			:orientation "v"
 			:space-evenly "true"
 			(button
-				:onclick {icon_num ? "hyprctl dispatch focuswindow ${process_name}" : process_name}
+				:onclick {is_alive ? "hyprctl dispatch focuswindow ${process_name}" : process_name}
 				(image 
 					:class "dockicons"
 					:path icon_path
 					:image-width 50))
 			(image
-				:image-height {icon_num ? 12 : 0}
+				:image-height {is_alive ? 12 : 0}
 				:path "${icon_base_path}/ada.png"
 				:class "dockiconsindicator"))))
