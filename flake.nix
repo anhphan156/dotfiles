@@ -26,6 +26,10 @@
         mkdir -p $out/share/eww/variables
         echo '(defvar icon_base_path "${wallpapers.packages.${system}.default}/icons")' > $out/share/eww/variables/iconspath.yuck
 
+        # picom
+        mkdir -p $out/share/picom
+        cp -r $src/config/picom/*.glsl $out/share/picom
+
         # rofi
         mkdir -p $out/share/rofi
         cp -r $src/config/rofi/* $out/share/rofi
