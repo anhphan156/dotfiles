@@ -22,19 +22,21 @@
 		(center)
 		(right)))
 
+(defvar icon_height 23)
+
 (defwidget left []
 	(box
-		:class "r"
+		:class "box"
 		:halign "start"
 		:valign "center"
 		:orientation "h"
 		(image
-			:image-height 23
+			:image-height icon_height
 			:path "${icon_base_path}/ada.png")))
 
 (defwidget center []
 	(box
-		:class "r"
+		:class "box"
 		:halign "center"
 		:valign "center"
 		:orientation "h"
@@ -44,29 +46,40 @@
 
 (defwidget right []
 	(box
-		:class "r"
+		:class "box"
 		:halign "end"
-		:valign "center"
 		:orientation "h"
-		""
+		(box
+			:halign "end"
+			:style "min-width:30px"
+			(button
+				(image
+					:image-height icon_height
+					:path "${icon_base_path}/wifi_analyzer_5.png")))
 		(eventbox
+			:class "powereventbox"
 			:onhover "eww update power=true"
 			:onhoverlost "eww update power=false"
 			(box
-				:class "pr10"
+				:orientation "horizontal"
+				:hexpand true
 				(revealer
 					:transition "slideleft"
 					:reveal power
 					(box
+						:class "powerbuttons"
 						(button
-							:class "powermenu red-text"
+							:class "poweritem red-text"
 							:onclick "shutdown -h now"
 							"")
 						(button
-							:class "powermenu red-text"
+							:class "poweritem red-text"
 							:onclick "reboot"
-						"")))
-					"⏻"))))
+							"")))
+				(image
+					:image-height icon_height
+					:path "${icon_base_path}/powerpanel.png")
+				))))
 
 (defpoll time
 	:interval "60s"

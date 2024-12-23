@@ -3,26 +3,33 @@
   background-color: rgba(0, 0, 0, 0.50);
 }
 
-.r {
+.box {
   font-family: "Anka/Coder";
   font-size: 20px;
   color: #eeeeee;
   min-height: 45px;
   padding: 0px 10px 0px 10px;
-}
 
-.black-container {
-  border-radius: 10px;
-  background-color: #000000;
-  padding: 8px 10px 5px 0px;
+  .powerbuttons {
+    transition: 0.3s;
+    padding: 1px;
+    opacity: 0;
+
+    .poweritem{
+      padding: 5px;
+      min-width: 00px;
+    }
+  }
+
+  .powereventbox:hover {
+
+    .powerbuttons {
+      opacity: 1;
+    }
+  }
 }
 
 .red-text {
   font-size: 20px;
   color: #ee9999;
-}
-
-
-.powermenu{
-  min-width: 37px;
 }
