@@ -4,6 +4,7 @@
   outputs = {
     nixpkgs,
     wallpapers,
+    self,
     ...
   }: let
     system = "x86_64-linux";
@@ -37,6 +38,21 @@
           mkdir -p $out/share/eww/variables
           echo '(defvar icon_base_path "${wallpapers.packages.${system}.default}/icons")' > $out/share/eww/variables/iconspath.yuck
         '';
+      };
+    };
+
+    nixosModules.default = {lib, ...}: {
+      options.dotfiles = {
+        rofiX = lib.mkOption {
+          readOnly = true;
+          type = lib.types.str;
+          default = "${self.packages.${system}.default}/share/rofi/configX.rasi";
+        };
+        rofiW = lib.mkOption {
+          readOnly = true;
+          type = lib.types.str;
+          default = "${self.packages.${system}.default}/share/rofi/config.rasi";
+        };
       };
     };
   };
