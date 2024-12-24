@@ -1,13 +1,18 @@
 {
-  writeShellScript,
+  writeShellApplication,
   leftdockpopulate,
+  eww,
   ...
 }:
-writeShellScript "ewwinit" ''
-  eww daemon
+writeShellApplication {
+  name = "ewwinit";
+  runtimeInputs = [eww leftdockpopulate];
+  text = ''
+    eww daemon
 
-  eww open bar
-  eww open leftdock
+    eww open bar
+    eww open leftdock
 
-  ${leftdockpopulate}
-''
+    leftdockpopulate
+  '';
+}

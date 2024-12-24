@@ -12,19 +12,15 @@
     src = ./.;
   in {
     packages.${system} = {
-      eww-scripts = pkgs.stdenv.mkDerivation {
-        pname = "EWW scripts";
-        version = "1.0.0";
-        src = ./scripts/eww;
-
-        installPhase = let
-          inherit (pkgs) callPackage;
-          leftdockpopulate = callPackage ./scripts/eww/leftdockpopulate.nix {inherit src;};
-        in ''
-          mkdir -p $out/bin
-          cp ${leftdockpopulate} $out/bin/leftdockpopulate
-          cp ${callPackage ./scripts/eww/ewwinit.nix {inherit leftdockpopulate;}} $out/bin/ewwinit
-        '';
+      eww-scripts = pkgs.symlinkJoin {
+        name = "EWW scripts";
+        paths = let
+          data = builtins.readFile (src + /config/eww/data/leftdock.json);
+          leftdockpopulate = pkgs.callPackage ./scripts/eww/leftdockpopulate.nix {inherit data;};
+        in [
+          leftdockpopulate
+          (pkgs.callPackage ./scripts/eww/ewwinit.nix {inherit leftdockpopulate;})
+        ];
       };
 
       default = pkgs.stdenv.mkDerivation {

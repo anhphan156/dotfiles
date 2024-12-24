@@ -1,10 +1,14 @@
 {
-  writeShellScript,
-  src,
+  writeShellApplication,
+  eww,
+  data,
   ...
-}: let
-  data = builtins.readFile (src + /config/eww/data/leftdock.json);
-in
-  writeShellScript "leftdockpopulate" ''
-    eww update items='${data}'
-  ''
+}:
+writeShellApplication {
+  name = "leftdockpopulate";
+  runtimeInputs = [eww];
+  text = ''
+    # shellcheck disable=SC1079,SC2140,SC1078
+    eww update items="${data}"
+  '';
+}
