@@ -48,10 +48,20 @@
           type = lib.types.path;
           default = "${self.packages.${system}.default}/share/rofi/configX.rasi";
         };
-        rofiW = lib.mkOption {
+        rofiWayland = lib.mkOption {
           readOnly = true;
           type = lib.types.path;
           default = "${self.packages.${system}.default}/share/rofi/config.rasi";
+        };
+        rofiOne = lib.mkOption {
+          readOnly = true;
+          type = lib.types.path;
+          default = "${self.packages.${system}.default}/share/rofi/config1Col.rasi";
+        };
+        rofiPrompt = lib.mkOption {
+          readOnly = true;
+          type = lib.types.path;
+          default = "${self.packages.${system}.default}/share/rofi/configPromptOnly.rasi";
         };
       };
     };
