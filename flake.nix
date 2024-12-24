@@ -45,12 +45,12 @@
       options.dotfiles = {
         rofiX = lib.mkOption {
           readOnly = true;
-          type = lib.types.str;
+          type = lib.types.path;
           default = "${self.packages.${system}.default}/share/rofi/configX.rasi";
         };
         rofiW = lib.mkOption {
           readOnly = true;
-          type = lib.types.str;
+          type = lib.types.path;
           default = "${self.packages.${system}.default}/share/rofi/config.rasi";
         };
       };
