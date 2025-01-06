@@ -1,21 +1,21 @@
 configuration {
-    modes: "ssh,window,drun,run";
+    modes: "window,drun,run";
     combi-modes: "window";
     font: "AnkaCoder-r 15";
 
     display-window: "";
     display-run: "♥";
+    display-ssh: "";
     display-drun: "";
     display-calc: "";
     display-combi: "";
     display-emoji: "";
-    display-ssh: "";
 
 
 
     terminal: "kitty";
 /*	ssh-client: "ssh";*/
-		ssh-command: "{terminal} -- kitty +kitten ssh {host}";
+/*	ssh-command: "{terminal} -e {ssh-client} {host} [-p {port}]";*/
 /*	run-command: "{cmd}";*/
 /*	run-list-command: "";*/
 /*	run-shell-command: "{terminal} -e {cmd}";*/
@@ -160,7 +160,7 @@ configuration {
 }
 
 window {
-    background-color: #aabbcc01;
+    background-image: url("bg.jpg", HEIGHT);
 		fullscreen: false;
     border: 0;
     border-color: @x14;

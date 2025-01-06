@@ -38,23 +38,23 @@
     };
 
     nixosModules.default = {lib, ...}: {
-      options.dotfiles = {
-        rofiX = lib.mkOption {
-          readOnly = true;
-          type = lib.types.path;
-          default = "${self.packages.${system}.default}/share/rofi/configX.rasi";
-        };
-        rofiWayland = lib.mkOption {
+      options.dotfiles.rofi = {
+        default = lib.mkOption {
           readOnly = true;
           type = lib.types.path;
           default = "${self.packages.${system}.default}/share/rofi/config.rasi";
         };
-        rofiOne = lib.mkOption {
+        transparent = lib.mkOption {
+          readOnly = true;
+          type = lib.types.path;
+          default = "${self.packages.${system}.default}/share/rofi/transparent.rasi";
+        };
+        oneColumn = lib.mkOption {
           readOnly = true;
           type = lib.types.path;
           default = "${self.packages.${system}.default}/share/rofi/config1Col.rasi";
         };
-        rofiPrompt = lib.mkOption {
+        prompt = lib.mkOption {
           readOnly = true;
           type = lib.types.path;
           default = "${self.packages.${system}.default}/share/rofi/configPromptOnly.rasi";
