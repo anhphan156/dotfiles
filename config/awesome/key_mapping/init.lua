@@ -56,7 +56,7 @@ awful.keyboard.append_global_keybindings({
 	end, { description = "open a terminal", group = "launcher" }),
 
 	awful.key({ altkey }, spacekey, function()
-		awful.spawn.with_shell("rofi -show run -config ~/.config/rofi/configX.rasi")
+		awful.spawn.with_shell("rofi -show run")
 	end, { description = "open rofi", group = "launcher" }),
 
 	awful.key({ modkey }, "l", function()
