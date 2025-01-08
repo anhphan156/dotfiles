@@ -59,6 +59,11 @@
           type = lib.types.path;
           default = "${self.packages.${system}.default}/share/rofi/configPromptOnly.rasi";
         };
+        image = lib.mkOption {
+          readOnly = true;
+          type = lib.types.path;
+          default = "${self.packages.${system}.default}/share/rofi/imgprev.rasi";
+        };
       };
     };
   };
