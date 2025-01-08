@@ -1,0 +1,122 @@
+configuration {
+		modes: "dmenu";
+		font: "AnkaCoder-r 15";
+		display-dmenu: "♥";
+		sort: false;
+
+
+		timeout {
+				action: "kb-cancel";
+				delay:  0;
+		}
+		filebrowser {
+				directories-first: true;
+				sorting-method:    "name";
+		}
+}
+
+* {
+		separatorcolor: rgba(0,0,0,0);
+		thumbnail: "bg.jpg";
+}
+
+window {
+    background-image: url("bg.jpg", WIDTH);
+		fullscreen: false;
+    border: 0;
+    border-color: @x14;
+    border-radius: 12px;
+    padding: 00;
+    width: 57.57%;
+    height: 18em;
+    children: [ horibox ];
+}
+
+mainbox {
+    border: 0;
+    padding: 0;
+}
+
+horibox {
+    orientation: vertical;
+    children: [ listview, inputbar ];
+}
+
+inputbar {
+		width: 25%;
+    margin: 10px 10px 10px 10px;
+		padding: 10px 10px 10px 10px;
+		background-color: rgba(50, 50, 50, 80%);
+		border-radius: 12px;
+		children: [ prompt, entry ];
+}
+
+textbox {
+    text-color: @xfg;
+}
+
+listview {
+		layout: horizontal;
+    scrollbar: false;
+		margin: 10px 10px;
+		border-radius: 12px;
+}
+
+entry {
+		margin: 0px 15px;
+    text-color: rgba(230, 230, 230, 100%);
+    placeholder: "There is no place like ~/";
+}
+
+element {
+    spacing: 0px;
+    margin: 10px;
+		width: 15em;
+    orientation: vertical;
+    children: [ element-text, element-icon ];
+		border-radius: 12px;
+}
+element selected.normal {
+    background-color: #6767efcc;
+    text-color:       rgba(30, 30, 30, 100%);
+}
+
+element-text {
+    vertical-align:  0.5;
+    horizontal-align: 0.5;
+    padding: 12px 25px;
+}
+element normal.active {
+    background-color: rgba (0,0,0,0%);
+    text-color:       @x5;
+}
+
+element normal.normal {
+    background-color: #6767ef44;
+    text-color:       @xfg;
+}
+element alternate.normal {
+    background-color: #6767ef44;
+    text-color:       @xfg;
+}
+
+element-icon {
+    size: 10em;
+		margin: 10px;
+}
+
+prompt {
+    spacing:    0;
+    border:     0;
+    text-color: @xfg;
+}
+
+textbox-prompt-colon {
+    expand:     false;
+    str:        " ss ";
+    margin:     0px 0.3000em 0.0000em 0.0000em ;
+    text-color: inherit;
+}
+
+
+@import "colors.rasi"
