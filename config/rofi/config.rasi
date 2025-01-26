@@ -158,7 +158,7 @@ configuration {
 }
 
 window {
-    background-image: url("bg.jpg", HEIGHT);
+    background-image: @bg;
 		fullscreen: false;
     border: 0;
     border-color: @x14;

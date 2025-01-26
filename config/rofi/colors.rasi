@@ -17,4 +17,5 @@
     x13:    #B043D1;
     x14:    #3FDCEE;
     x15:    #FDFDFD;
+    bg:     url("bg.jpg", WIDTH);
 }

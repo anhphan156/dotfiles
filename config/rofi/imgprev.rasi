@@ -17,11 +17,10 @@ configuration {
 
 * {
 		separatorcolor: rgba(0,0,0,0);
-		thumbnail: "bg.jpg";
 }
 
 window {
-    background-image: url("bg.jpg", WIDTH);
+    background-image: @bg;
 		fullscreen: false;
     border: 0;
     border-color: @x14;

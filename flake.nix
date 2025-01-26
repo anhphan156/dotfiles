@@ -3,37 +3,31 @@
 
   outputs = {
     nixpkgs,
-    wallpapers,
     self,
     ...
-  }: let
+  } @ inputs: let
     system = "x86_64-linux";
-    pkgs = import nixpkgs {inherit system;};
-    src = ./.;
+    pkgs = import nixpkgs {
+      inherit system;
+      overlays = [
+        (_: prev: {
+          wallpapers = inputs.wallpapers.packages.${system}.default;
+        })
+      ];
+    };
   in {
     packages.${system} = {
+      default = pkgs.callPackage ./derivations/dotfiles.nix {inherit self;};
+
       eww-scripts = pkgs.symlinkJoin {
         name = "EWW scripts";
         paths = let
-          data = builtins.readFile (src + /config/eww/data/leftdock.json);
+          data = builtins.readFile ./config/eww/data/leftdock.json;
           leftdockpopulate = pkgs.callPackage ./scripts/eww/leftdockpopulate.nix {inherit data;};
         in [
           leftdockpopulate
           (pkgs.callPackage ./scripts/eww/ewwinit.nix {inherit leftdockpopulate;})
         ];
-      };
-
-      default = pkgs.stdenv.mkDerivation {
-        pname = "dotfiles";
-        version = "1.0.0";
-        inherit src;
-
-        installPhase = ''
-          mkdir -p $out/share
-          cp -r --no-preserve=mode,ownership $src/config/* $out/share
-          mkdir -p $out/share/eww/variables
-          echo '(defvar icon_base_path "${wallpapers.packages.${system}.default}/icons")' > $out/share/eww/variables/iconspath.yuck
-        '';
       };
     };
 
