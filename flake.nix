@@ -31,13 +31,7 @@
       };
     };
 
-    nixosModules.default = _: {
-      imports = [
-        ./modules/rofi.nix
-      ];
-
-      config._module.args = {inherit inputs;};
-    };
+    nixosModules.default = import ./modules/rofi.nix {inherit inputs pkgs;};
   };
 
   inputs = {
