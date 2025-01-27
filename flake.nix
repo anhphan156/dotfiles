@@ -17,7 +17,7 @@
     };
   in {
     packages.${system} = {
-      default = pkgs.callPackage ./derivations/dotfiles.nix {inherit self;};
+      default = pkgs.callPackage ./packages/dotfiles.nix {inherit self;};
 
       eww-scripts = pkgs.symlinkJoin {
         name = "EWW scripts";
@@ -31,34 +31,12 @@
       };
     };
 
-    nixosModules.default = {lib, ...}: {
-      options.dotfiles.rofi = {
-        default = lib.mkOption {
-          readOnly = true;
-          type = lib.types.path;
-          default = "${self.packages.${system}.default}/share/rofi/config.rasi";
-        };
-        transparent = lib.mkOption {
-          readOnly = true;
-          type = lib.types.path;
-          default = "${self.packages.${system}.default}/share/rofi/transparent.rasi";
-        };
-        oneColumn = lib.mkOption {
-          readOnly = true;
-          type = lib.types.path;
-          default = "${self.packages.${system}.default}/share/rofi/config1Col.rasi";
-        };
-        prompt = lib.mkOption {
-          readOnly = true;
-          type = lib.types.path;
-          default = "${self.packages.${system}.default}/share/rofi/configPromptOnly.rasi";
-        };
-        image = lib.mkOption {
-          readOnly = true;
-          type = lib.types.path;
-          default = "${self.packages.${system}.default}/share/rofi/imgprev.rasi";
-        };
-      };
+    nixosModules.default = _: {
+      imports = [
+        ./modules/rofi.nix
+      ];
+
+      config._module.args = {inherit inputs;};
     };
   };
 
