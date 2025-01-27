@@ -16,7 +16,7 @@ stdenvNoCC.mkDerivation {
   '';
 
   installPhase = ''
-    mkdir -p $out/share
-    cp -r --no-preserve=mode,ownership ./config/rofi $out/share
+    install -dm755 $out
+    cp -r ./config/rofi/* $out
   '';
 }
