@@ -20,7 +20,7 @@
       path = lib.mkOption {
         readOnly = true;
         type = lib.types.path;
-        default = "${config.dotfiles.rofi.config}/share/rofi/config.rasi";
+        default = "${config.dotfiles.rofi.config}/config.rasi";
       };
       background = lib.mkOption {
         type = lib.types.path;
@@ -30,22 +30,22 @@
     transparent = lib.mkOption {
       readOnly = true;
       type = lib.types.path;
-      default = "${config.dotfiles.rofi.config}/share/rofi/transparent.rasi";
+      default = "${config.dotfiles.rofi.config}/transparent.rasi";
     };
     oneColumn = lib.mkOption {
       readOnly = true;
       type = lib.types.path;
-      default = "${config.dotfiles.rofi.config}/share/rofi/config1Col.rasi";
+      default = "${config.dotfiles.rofi.config}/config1Col.rasi";
     };
     prompt = lib.mkOption {
       readOnly = true;
       type = lib.types.path;
-      default = "${config.dotfiles.rofi.config}/share/rofi/configPromptOnly.rasi";
+      default = "${config.dotfiles.rofi.config}/configPromptOnly.rasi";
     };
     image = lib.mkOption {
       readOnly = true;
       type = lib.types.path;
-      default = "${config.dotfiles.rofi.config}/share/rofi/imgprev.rasi";
+      default = "${config.dotfiles.rofi.config}/imgprev.rasi";
     };
   };
 }
