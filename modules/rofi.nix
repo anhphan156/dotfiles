@@ -23,7 +23,6 @@
         default = "${config.dotfiles.rofi.config}/share/rofi/config.rasi";
       };
       background = lib.mkOption {
-        readOnly = true;
         type = lib.types.path;
         default = "${pkgs.wallpapers}/single/firefly0.jpg";
       };
