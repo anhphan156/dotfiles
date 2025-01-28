@@ -1,13 +1,13 @@
 {
   stdenvNoCC,
   imagemagick_light,
-  self,
+  src,
   defaultBackground,
   ...
 }:
 stdenvNoCC.mkDerivation {
   name = "rofi-config";
-  src = self;
+  inherit src;
 
   nativeBuildInputs = [imagemagick_light];
 
