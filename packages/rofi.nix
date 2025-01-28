@@ -1,22 +1,32 @@
 {
   stdenvNoCC,
   imagemagick_light,
-  self,
-  defaultBackground,
+  src,
+  backgrounds,
+  lib,
   ...
-}:
-stdenvNoCC.mkDerivation {
-  name = "rofi-config";
-  src = self;
+}: let
+  uniqueBackground = lib.foldl (acc: x:
+    if lib.elem x acc
+    then acc
+    else acc ++ x) []
+  backgrounds;
+in
+  stdenvNoCC.mkDerivation {
+    name = "rofi-config";
+    inherit src;
 
-  nativeBuildInputs = [imagemagick_light];
+    nativeBuildInputs = [imagemagick_light];
 
-  patchPhase = ''
-    magick ${defaultBackground} -resize 960x ./config/rofi/bg.jpg
-  '';
+    installPhase =
+      ''
+        install -dm755 $out
+        cp -r ./config/rofi/* $out
 
-  installPhase = ''
-    install -dm755 $out
-    cp -r ./config/rofi/* $out
-  '';
-}
+        touch $out/bg.rasi
+      ''
+      + lib.concatMapStringsSep
+      "\n"
+      (background: "magick ${background.bgPath} -resize 960x ./config/rofi/${background.bgName}.jpg")
+      uniqueBackground;
+  }

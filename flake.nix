@@ -31,6 +31,11 @@
       };
     };
 
+    nixosConfigurations.test = nixpkgs.lib.nixosSystem {
+      inherit system;
+      modules = [self.nixosModules.default];
+    };
+
     nixosModules.default = import ./modules/rofi.nix {inherit inputs pkgs;};
   };
 

@@ -1,0 +1,98 @@
+configuration {
+    font: "AnkaCoder-r 15";
+
+  	kb-move-char-back: "";
+  	kb-move-char-forward: "";
+    kb-mode-next: "Right";
+    kb-mode-previous: "Left";
+}
+
+* {
+		separatorcolor: rgba(0,0,0,0);
+    mbg: #9e4343;
+    mfg: #eeeeee;
+    bradius: 24px;
+}
+
+window {
+    background-color: transparent;
+    transparency: "real";
+		fullscreen: false;
+    border: 0;
+    border-color: @x14;
+    border-radius: @bradius;
+    padding: 00;
+    width: env(SCWIDTH, 35%);
+    height: env(SCHEIGHT, 35%);
+    children: [ horibox ];
+}
+
+horibox {
+    orientation: horizontal;
+    children: [  thumbnail, listview ];
+}
+
+thumbnail {
+    background-image: @style1bg;
+		margin: 10px 10px;
+		border-radius: @bradius;
+
+    orientation: vertical;
+    children: [ dummy, dummy, message ];
+}
+
+message {
+    enabled: true;
+    background-color: @mbg;
+    // text-color: @mfg;
+    border-radius: 12px;
+    padding: 10px 10px;
+    margin: 10px 20px;
+}
+
+dummy {
+    expand:true;
+}
+
+listview {
+    scrollbar: false;
+		background-color: rgba(50, 50, 50, 100%);
+		margin: 10px 10px;
+		border-radius: @bradius;
+}
+
+element {
+    spacing: 0px;
+    margin: 10px;
+    orientation: horizontal;
+    children: [ element-text ];
+		border-radius: 24px;
+}
+element selected.normal {
+    background-color: @mbg;
+    text-color:       rgba(30, 30, 30, 100%);
+}
+element normal.normal {
+    background-color: rgba (0,0,0,0%);
+    text-color:       @mfg;
+}
+
+element-text {
+    vertical-align:  0.5;
+    horizontal-align: 1.0;
+    padding: 12px 25px;
+}
+element normal.active {
+    background-color: rgba (0,0,0,0%);
+    text-color:       @x5;
+}
+element alternate.normal {
+    background-color: rgba (0,0,0,0%);
+    text-color:       @xfg;
+}
+
+element-icon {
+    size: 2.0em;
+}
+
+@import "colors.rasi"
