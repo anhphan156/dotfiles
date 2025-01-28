@@ -19,6 +19,12 @@
     };
 in {
   options.dotfiles.rofi = {
+    config = lib.mkOption {
+      readOnly = true;
+      type = lib.types.package;
+      default = rofiConfig;
+    };
+
     background = lib.mkOption {
       type = lib.types.path;
       default = "${pkgs.wallpapers}/single/firefly0.jpg";
