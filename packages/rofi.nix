@@ -11,12 +11,10 @@ stdenvNoCC.mkDerivation {
 
   nativeBuildInputs = [imagemagick_light];
 
-  patchPhase = ''
-    magick ${defaultBackground} -resize 960x ./config/rofi/bg.jpg
-  '';
-
   installPhase = ''
     install -dm755 $out
     cp -r ./config/rofi/* $out
+
+    magick ${defaultBackground} -resize 960x $out/bg.jpg
   '';
 }

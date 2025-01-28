@@ -5,47 +5,29 @@
   lib,
   config,
   ...
-}: {
-  options.dotfiles.rofi = {
-    config = lib.mkOption {
+}: let
+  rofiConfig = pkgs.callPackage ../packages/rofi.nix {
+    src = inputs.self;
+    defaultBackground = config.dotfiles.rofi.background;
+  };
+
+  genOption = configFile:
+    lib.mkOption {
       readOnly = true;
-      type = lib.types.package;
-      default = pkgs.callPackage ../packages/rofi.nix {
-        inherit (inputs) self;
-        defaultBackground = config.dotfiles.rofi.default.background;
-      };
+      type = lib.types.path;
+      default = rofiConfig + configFile;
+    };
+in {
+  options.dotfiles.rofi = {
+    background = lib.mkOption {
+      type = lib.types.path;
+      default = "${pkgs.wallpapers}/single/firefly0.jpg";
     };
 
-    default = {
-      path = lib.mkOption {
-        readOnly = true;
-        type = lib.types.path;
-        default = "${config.dotfiles.rofi.config}/config.rasi";
-      };
-      background = lib.mkOption {
-        type = lib.types.path;
-        default = "${pkgs.wallpapers}/single/firefly0.jpg";
-      };
-    };
-    transparent = lib.mkOption {
-      readOnly = true;
-      type = lib.types.path;
-      default = "${config.dotfiles.rofi.config}/transparent.rasi";
-    };
-    oneColumn = lib.mkOption {
-      readOnly = true;
-      type = lib.types.path;
-      default = "${config.dotfiles.rofi.config}/config1Col.rasi";
-    };
-    prompt = lib.mkOption {
-      readOnly = true;
-      type = lib.types.path;
-      default = "${config.dotfiles.rofi.config}/configPromptOnly.rasi";
-    };
-    image = lib.mkOption {
-      readOnly = true;
-      type = lib.types.path;
-      default = "${config.dotfiles.rofi.config}/imgprev.rasi";
-    };
+    default = genOption /config.rasi;
+    transparent = genOption /transparent.rasi;
+    oneColumn = genOption /config1Col.rasi;
+    prompt = genOption /configPromptOnly.rasi;
+    image = genOption /imgprev.rasi;
   };
 }

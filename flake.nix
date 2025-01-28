@@ -17,7 +17,7 @@
     };
   in {
     packages.${system} = {
-      default = pkgs.callPackage ./packages/dotfiles.nix {inherit self;};
+      default = pkgs.callPackage ./packages/dotfiles.nix {src = self;};
 
       eww-scripts = pkgs.symlinkJoin {
         name = "EWW scripts";

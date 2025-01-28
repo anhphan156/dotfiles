@@ -1,25 +1,18 @@
 {
-  stdenv,
-  imagemagick_light,
+  stdenvNoCC,
   wallpapers,
-  self,
-  rofiBg ? (wallpapers + "/single/firefly0.jpg"),
+  src,
   ...
 }:
-stdenv.mkDerivation {
+stdenvNoCC.mkDerivation {
   pname = "dotfiles";
   version = "1.0.0";
-  src = self;
-
-  nativeBuildInputs = [imagemagick_light];
-
-  patchPhase = ''
-    magick ${rofiBg} -resize 960x ./config/rofi/bg.jpg
-    sed -i 's|<PATH>|${wallpapers + "/icons"}|g' ./config/eww/variables/iconspath.yuck
-  '';
+  inherit src;
 
   installPhase = ''
     mkdir -p $out/share
-    cp -r --no-preserve=mode,ownership ./config/* $out/share
+    cp -r ./config/* $out/share
+
+    sed -i 's|<PATH>|${wallpapers + "/icons"}|g' $out/share/eww/variables/iconspath.yuck
   '';
 }
