@@ -33,11 +33,7 @@
       };
     });
 
-    nixosModules.default = {
-      imports = [
-        (nixpkgs.lib.modules.importApply ./modules/rofi.nix inputs)
-      ];
-    };
+    nixosModules.default = nixpkgs.lib.modules.importApply ./modules/rofi.nix inputs;
   };
 
   inputs = {
