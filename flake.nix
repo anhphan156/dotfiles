@@ -33,11 +33,6 @@
       };
     });
 
-    nixosConfigurations.default = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [self.nixosModules.default];
-    };
-
     nixosModules.default = {pkgs, ...}: {
       imports = [
         (nixpkgs.lib.modules.importApply ./modules/rofi.nix {
