@@ -6,17 +6,19 @@
     self,
     ...
   } @ inputs: let
-    system = "x86_64-linux";
-    pkgs = import nixpkgs {
-      inherit system;
-      overlays = [
-        (_: prev: {
-          wallpapers = inputs.wallpapers.packages.${system}.default;
-        })
-      ];
-    };
+    supportedSystem = ["x86_64-linux"];
+    forAllSystems = nixpkgs.lib.genAttrs supportedSystem;
   in {
-    packages.${system} = {
+    packages = forAllSystems (system: let
+      pkgs = import nixpkgs {
+        inherit system;
+        overlays = [
+          (_: prev: {
+            wallpapers = inputs.wallpapers.packages.${system}.default;
+          })
+        ];
+      };
+    in {
       default = pkgs.callPackage ./packages/dotfiles.nix {src = self;};
 
       eww-scripts = pkgs.symlinkJoin {
@@ -29,9 +31,23 @@
           (pkgs.callPackage ./scripts/eww/ewwinit.nix {inherit leftdockpopulate;})
         ];
       };
-    };
+    });
 
-    nixosModules.default = import ./modules/rofi.nix {inherit inputs pkgs;};
+    nixosModules.default = {config, ...}: let
+      inherit (config.nixpkgs) system;
+      pkgs = import nixpkgs {
+        inherit system;
+        overlays = [
+          (_: prev: {
+            wallpapers = inputs.wallpapers.packages.${system}.default;
+          })
+        ];
+      };
+    in {
+      imports = [
+        (nixpkgs.lib.modules.importApply ./modules/rofi.nix {inherit inputs pkgs;})
+      ];
+    };
   };
 
   inputs = {
