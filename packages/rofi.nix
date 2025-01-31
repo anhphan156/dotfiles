@@ -1,6 +1,6 @@
 {
   stdenvNoCC,
-  imagemagick_light,
+  imagemagick,
   src,
   defaultBackground,
   ...
@@ -9,7 +9,7 @@ stdenvNoCC.mkDerivation {
   name = "rofi-config";
   inherit src;
 
-  nativeBuildInputs = [imagemagick_light];
+  nativeBuildInputs = [imagemagick];
 
   installPhase = ''
     install -dm755 $out
