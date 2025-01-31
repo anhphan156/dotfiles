@@ -33,19 +33,19 @@
       };
     });
 
-    nixosModules.default = {config, ...}: let
-      inherit (config.nixpkgs) system;
-      pkgs = import nixpkgs {
-        inherit system;
-        overlays = [
-          (_: prev: {
-            wallpapers = inputs.wallpapers.packages.${system}.default;
-          })
-        ];
-      };
-    in {
+    nixosConfigurations.default = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [self.nixosModules.default];
+    };
+
+    nixosModules.default = {pkgs, ...}: {
       imports = [
-        (nixpkgs.lib.modules.importApply ./modules/rofi.nix {inherit inputs pkgs;})
+        (nixpkgs.lib.modules.importApply ./modules/rofi.nix {
+          inherit inputs;
+          pkgs = pkgs.extend (_: prev: {
+            wallpapers = inputs.wallpapers.packages.${prev.system}.default;
+          });
+        })
       ];
     };
   };
