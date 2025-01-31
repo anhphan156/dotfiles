@@ -37,7 +37,7 @@
       imports = [
         (nixpkgs.lib.modules.importApply ./modules/rofi.nix {
           inherit inputs;
-          pkgs = pkgs.extend (_: prev: {
+          pkgs' = pkgs.extend (_: prev: {
             wallpapers = inputs.wallpapers.packages.${prev.system}.default;
           });
         })
