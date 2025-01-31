@@ -1,12 +1,10 @@
-{
-  inputs,
-  pkgs',
-}: {
+inputs: {
   lib,
   config,
+  pkgs,
   ...
 }: let
-  rofiConfig = pkgs'.callPackage ../packages/rofi.nix {
+  rofiConfig = pkgs.callPackage ../packages/rofi.nix {
     src = inputs.self;
     defaultBackground = config.dotfiles.rofi.background;
   };
@@ -27,7 +25,7 @@ in {
 
     background = lib.mkOption {
       type = lib.types.path;
-      default = "${pkgs'.wallpapers}/single/firefly0.jpg";
+      default = "${inputs.wallpapers}/single/firefly0.jpg";
     };
 
     default = genOption /config.rasi;

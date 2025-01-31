@@ -33,14 +33,9 @@
       };
     });
 
-    nixosModules.default = {pkgs, ...}: {
+    nixosModules.default = {
       imports = [
-        (nixpkgs.lib.modules.importApply ./modules/rofi.nix {
-          inherit inputs;
-          pkgs' = pkgs.extend (_: prev: {
-            wallpapers = inputs.wallpapers.packages.${prev.system}.default;
-          });
-        })
+        (nixpkgs.lib.modules.importApply ./modules/rofi.nix inputs)
       ];
     };
   };
