@@ -1,6 +1,7 @@
 {
   stdenvNoCC,
   wallpapers,
+  windowWidth ? "100%",
   src,
   ...
 }:
@@ -13,6 +14,8 @@ stdenvNoCC.mkDerivation {
     mkdir -p $out/share
     cp -r ./config/* $out/share
 
-    sed -i 's|<PATH>|${wallpapers + "/icons"}|g' $out/share/eww/variables/iconspath.yuck
+    injected=$out/share/eww/variables/injected.yuck
+    sed -i 's|<PATH>|${wallpapers + "/icons"}|g' $injected
+    sed -i 's|<TOP_BAR_WIDTH>|${windowWidth}|g' $injected
   '';
 }
