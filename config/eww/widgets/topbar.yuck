@@ -5,7 +5,7 @@
 		(geometry 
 		  :x "0%"
 			:y "0px"
-			:width top_bar_width
+			:width "<TOP_BAR_WIDTH>"
 			:height "30px"
 			:anchor "top center")
 	:stacking "fg"

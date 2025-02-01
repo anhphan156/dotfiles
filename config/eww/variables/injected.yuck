@@ -1,2 +1,1 @@
 (defvar icon_base_path "<PATH>")
-(defvar top_bar_width "<TOP_BAR_WIDTH>")

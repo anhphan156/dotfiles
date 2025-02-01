@@ -14,8 +14,8 @@ stdenvNoCC.mkDerivation {
     mkdir -p $out/share
     cp -r ./config/* $out/share
 
-    injected=$out/share/eww/variables/injected.yuck
-    sed -i 's|<PATH>|${wallpapers + "/icons"}|g' $injected
-    sed -i 's|<TOP_BAR_WIDTH>|${topBarWidth}|g' $injected
+    sed -i 's|<PATH>|${wallpapers + "/icons"}|g' $out/share/eww/variables/injected.yuck
+    sed -i 's|<TOP_BAR_WIDTH>|${topBarWidth}|g' $out/share/eww/widgets/topbar.yuck
+
   '';
 }
