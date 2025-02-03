@@ -7,7 +7,7 @@
 			:y "0px"
 			:width "10px"
 			:height "380px"
-			:anchor "left center"
+			:anchor "<DOCK_POSITION>"
 		)
 	:stacking "fg"
 	:reserve (struts :distance "20px" :side "left")

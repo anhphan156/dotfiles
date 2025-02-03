@@ -2,6 +2,7 @@
   stdenvNoCC,
   wallpapers,
   topBarWidth ? "100%",
+  dockPostion ? "left center",
   src,
   ...
 }:
@@ -16,6 +17,6 @@ stdenvNoCC.mkDerivation {
 
     sed -i 's|<PATH>|${wallpapers + "/icons"}|g' $out/share/eww/variables/injected.yuck
     sed -i 's|<TOP_BAR_WIDTH>|${topBarWidth}|g' $out/share/eww/widgets/topbar.yuck
-
+    sed -i 's|<DOCK_POSITION>|${dockPostion}|g' $out/share/eww/widgets/leftdock.yuck
   '';
 }
