@@ -25,7 +25,7 @@ in {
 
     background = lib.mkOption {
       type = lib.types.path;
-      default = "${inputs.wallpapers}/single/firefly0.jpg";
+      default = "${inputs.wallpapers.packages.${pkgs.system}.default}/single/firefly0.jpg";
     };
 
     default = genOption /config.rasi;
