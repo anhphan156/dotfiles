@@ -13,9 +13,7 @@
       pkgs = import nixpkgs {
         inherit system;
         overlays = [
-          (_: prev: {
-            wallpapers = inputs.wallpapers.packages.${system}.default;
-          })
+          inputs.wallpapers.overlays.default
         ];
       };
     in {
