@@ -5,31 +5,26 @@
     nixpkgs,
     self,
     ...
-  } @ inputs: let
-    supportedSystem = ["x86_64-linux"];
-    forAllSystems = nixpkgs.lib.genAttrs supportedSystem;
-  in {
-    packages = forAllSystems (system: let
-      pkgs = import nixpkgs {
-        inherit system;
-        overlays = [
-          inputs.wallpapers.overlays.default
-        ];
-      };
+  } @ inputs: {
+    overlays.default = _: prev': let
+      prev = prev'.extend <| prev'.lib.composeManyExtensions [
+        inputs.wallpapers.overlays.default
+        (_: prev: {
+          leftdockpopulate = prev.callPackage ./scripts/eww/leftdockpopulate.nix {
+            data = builtins.readFile ./config/eww/data/leftdock.json;
+          };
+        })
+      ];
     in {
-      default = pkgs.callPackage ./packages/dotfiles.nix {src = self;};
-
-      eww-scripts = pkgs.symlinkJoin {
+      default = prev.callPackage ./packages/dotfiles.nix {src = self;};
+      eww-scripts = prev.symlinkJoin {
         name = "EWW scripts";
-        paths = let
-          data = builtins.readFile ./config/eww/data/leftdock.json;
-          leftdockpopulate = pkgs.callPackage ./scripts/eww/leftdockpopulate.nix {inherit data;};
-        in [
-          leftdockpopulate
-          (pkgs.callPackage ./scripts/eww/ewwinit.nix {inherit leftdockpopulate;})
+        paths = [
+          prev.leftdockpopulate
+          (prev.callPackage ./scripts/eww/ewwinit.nix {})
         ];
       };
-    });
+    };
 
     nixosModules.default = nixpkgs.lib.modules.importApply ./modules/rofi.nix inputs;
   };
