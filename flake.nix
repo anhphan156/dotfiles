@@ -16,8 +16,8 @@
         })
       ];
     in {
-      default = prev.callPackage ./packages/dotfiles.nix {src = self;};
-      eww-scripts = prev.symlinkJoin {
+      myDotfiles = prev.callPackage ./packages/dotfiles.nix {src = self;};
+      myEwwScripts = prev.symlinkJoin {
         name = "EWW scripts";
         paths = [
           prev.leftdockpopulate
