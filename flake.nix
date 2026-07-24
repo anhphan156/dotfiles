@@ -11,6 +11,7 @@
         prev'.extend
         <| prev'.lib.composeManyExtensions [
           (import ./overlays/gdb.nix)
+          inputs.emacs-overlay.overlays.default
           inputs.neovim-nightly.overlays.default
         ];
     in {
@@ -26,7 +27,18 @@
           |> prev.lib.filterAttrs (_: v: v == "regular")
           |> prev.lib.mapAttrsToList (k: _: prev.callPackage "${self}/scripts/neovim/${k}" {});
       };
+      emacs = prev.callPackage ./packages/emacs.nix {};
     };
+
+    packages."x86_64-linux".default = let
+      pkgs = import nixpkgs {
+        system = "x86_64-linux";
+        overlays = [
+          inputs.emacs-overlay.overlays.default
+        ];
+      };
+    in
+      pkgs.callPackage ./packages/emacs.nix {};
 
     nixosModules.default = nixpkgs.lib.modules.importApply ./modules/rofi.nix inputs;
   };
@@ -34,5 +46,6 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
+    emacs-overlay.url = "github:nix-community/emacs-overlay";
   };
 }
