@@ -12,22 +12,9 @@
         <| prev'.lib.composeManyExtensions [
           (import ./overlays/gdb.nix)
           inputs.neovim-nightly.overlays.default
-          (_: prev: {
-            leftdockpopulate = prev.callPackage ./scripts/eww/leftdockpopulate.nix {
-              data = builtins.readFile ./config/eww/data/leftdock.json;
-            };
-            ewwinit = prev.callPackage ./scripts/eww/ewwinit.nix {};
-          })
         ];
     in {
       myDotfiles = prev.callPackage ./packages/dotfiles.nix {src = self;};
-      myEwwScripts = prev.symlinkJoin {
-        name = "EWW scripts";
-        paths = [
-          prev.leftdockpopulate
-          prev.ewwinit
-        ];
-      };
       wallpapers = prev.callPackage ./packages/wallpapers.nix {};
       neovim = prev.callPackage ./packages/neovim.nix {
         initLua = ./config/neovim/init.lua;

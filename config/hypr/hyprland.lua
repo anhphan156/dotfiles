@@ -9,20 +9,6 @@
 -- Create your files separately and then require them like this:
 -- require("myColors")
 
-
-------------------
----- MONITORS ----
-------------------
-
--- See https://wiki.hypr.land/Configuring/Basics/Monitors/
-
-hl.monitor({
-	output   = "eDP-1",
-	mode     = "1920x1080",
-	position = "0x0",
-	scale    = "1.0",
-})
-
 ---------------------
 ---- MY PROGRAMS ----
 ---------------------
@@ -43,6 +29,13 @@ local terminal = "kitty"
 hl.on("hyprland.start", function()
 	hl.exec_cmd("gentoo-pipewire-launcher")
 	hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
+
+	hl.exec_cmd("eww daemon")
+	hl.exec_cmd("eww open bar")
+
+	hl.exec_cmd("pypr &")
+
+	hl.exec_cmd("awww &")
 end)
 
 
@@ -84,13 +77,13 @@ hl.env("XDG_SESSION_DESKTOP", "Hyprland")
 -- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
 hl.config({
 	general = {
-		gaps_in          = 0,
-		gaps_out         = 0,
+		gaps_in          = 5,
+		gaps_out         = 5,
 
-		border_size      = 0,
+		border_size      = 3,
 
 		col              = {
-			active_border   = { colors = { "rgba(33ccffee)", "rgba(00ff99ee)" }, angle = 45 },
+			active_border   = { colors = { "rgba(ce3454ff)", "rgba(82d5ffff)" }, angle = 45 },
 			inactive_border = "rgba(595959aa)",
 		},
 
@@ -104,30 +97,30 @@ hl.config({
 	},
 
 	decoration = {
-		rounding         = 0,
-		rounding_power   = 0,
+		rounding         = 10,
+		rounding_power   = 1,
 
 		-- Change transparency of focused and unfocused windows
-		active_opacity   = 1.0,
-		inactive_opacity = 1.0,
+		active_opacity   = 0.80,
+		inactive_opacity = 0.50,
 
 		shadow           = {
-			enabled      = false,
+			enabled      = true,
 			range        = 4,
 			render_power = 3,
 			color        = 0xee1a1a1a,
 		},
 
 		blur             = {
-			enabled  = false,
+			enabled  = true,
 			size     = 3,
-			passes   = 1,
+			passes   = 2,
 			vibrancy = 0.1696,
 		},
 	},
 
 	animations = {
-		enabled = false,
+		enabled = true,
 	},
 })
 
@@ -204,7 +197,7 @@ hl.config({
 
 hl.config({
 	misc = {
-		force_default_wallpaper = -1,    -- Set to 0 or 1 to disable the anime mascot wallpapers
+		force_default_wallpaper = -1, -- Set to 0 or 1 to disable the anime mascot wallpapers
 		disable_hyprland_logo   = false, -- If true disables the random hyprland logo / anime girl background. :(
 	},
 })
@@ -227,7 +220,7 @@ hl.config({
 		sensitivity  = 0, -- -1.0 - 1.0, 0 means no modification.
 
 		touchpad     = {
-			natural_scroll = false,
+			natural_scroll = true,
 		},
 	},
 })
@@ -264,7 +257,7 @@ local closeWindowBind = hl.bind(mainMod .. " + W", hl.dsp.window.close())
 hl.bind(mainMod .. " + M", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }))
 hl.bind(mainMod .. " + F", hl.dsp.window.float({ action = "toggle" }))
 hl.bind("ALT + SPACE", hl.dsp.exec_cmd("rofi -show drun"))
-hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
+hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("pypr toggle kitty"))
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit")) -- dwindle only
 hl.bind("Print", hl.dsp.exec_cmd("/home/backspace/data/dev/scripts/screenshot.sh"))
 hl.bind("ALT + TAB", hl.dsp.window.cycle_next({ next = true }))
@@ -310,10 +303,6 @@ hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----
 --------------------------------
-
-for i = 1, 3 do
-	hl.workspace_rule({ workspace = tostring(i), monitor = "DP-1" })
-end
 
 -- See https://wiki.hypr.land/Configuring/Basics/Window-Rules/
 -- and https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
