@@ -1,0 +1,260 @@
+#+title: Emacs
+#+PROPERTY: header-args :tangle ~/.config/emacs/init.el
+
+* Emacs Configuration
+** Packages
+- vterm
+- shellcheck
+- emacs-daemon
+- pdf-tools
+
+* Setting up use-package
+#+begin_src emacs-lisp
+(require 'package)
+
+(setq package-archives
+      '(("melpa" . "https://melpa.org/packages/")
+        ("gnu" . "https://elpa.gnu.org/packages/")))
+
+(package-initialize)
+
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(eval-when-compile
+  (require 'use-package))
+(setq use-package-always-ensure t)
+#+end_src
+
+* UI config
+#+begin_src emacs-lisp
+  (set-face-attribute 'default nil
+                      :family "Anka/Coder"
+                      :height 140)
+  (use-package ayu-theme
+    :ensure t
+    :config
+    (load-theme 'ayu-dark t))
+
+  (add-to-list 'major-mode-remap-alist '(c-mode . c-ts-mode))
+  (setq treesit-font-lock-level 4)
+
+  (use-package diff-hl
+    :ensure t
+    :init
+    (global-diff-hl-mode 1)
+    (diff-hl-flydiff-mode 1)
+    (diff-hl-margin-mode 1))
+
+  (use-package all-the-icons
+    :ensure t)
+  (use-package all-the-icons-dired
+    :ensure t
+    :hook (dired-mode . all-the-icons-dired-mode))
+  (use-package all-the-icons-ibuffer
+    :ensure t
+    :hook (ibuffer-mode . all-the-icons-ibuffer-mode))
+
+  					; icons for dired minibuffer
+  (use-package all-the-icons-completion
+    :ensure t)
+  (all-the-icons-completion-mode)
+  (add-hook 'marginalia-mode-hook #'all-the-icons-completion-marginalia-setup)
+
+  					; dired highlighting
+  (use-package diredfl
+    :ensure t
+    :hook (dired-mode . diredfl-mode))
+
+  (tool-bar-mode 0)
+  (menu-bar-mode 0) ; hide menu bar
+  (scroll-bar-mode 0) ; hide scroll bar
+  (global-display-line-numbers-mode) ; display number
+  (setq display-line-numbers-type 'relative) ; display relative number
+  (global-hl-line-mode 1) ; line highlighting
+
+  (setq use-dialog-box nil
+        use-file-dialog nil) ; no dialog box
+
+  (set-face-attribute 'line-number nil :foreground "#5a5a5a")
+  (set-face-attribute 'line-number-current-line nil :foreground "#ffffff" :weight 'bold)
+
+  (set-face-attribute 'region nil :background "#cd5566");
+#+end_src
+
+* Org mode
+#+begin_src emacs-lisp
+(require 'org)
+(setq org-directory "~/org/")
+(setq org-startup-with-inline-images t)
+(setq org-hide-leading-stars t)
+(setq org-startup-indented t)
+(setq org-image-actual-width nil)
+(setq org-link-frame-setup
+      '((file . find-file)))
+#+end_src
+
+* General keymaping
+#+begin_src emacs-lisp
+  ;; (defvar leader-map (make-sparse-keymap))
+  ;; (keymap-global-set "\\" leader-map)
+  ;; (with-eval-after-load 'org
+  ;;   (define-key org-mode-map (kbd "RET") #'org-open-at-point))
+  ;; (keymap-set leader-map "c" #'comment-dwim)
+  ;; (keymap-set leader-map "w" #'save-buffer)
+
+#+end_src
+
+* Editor
+#+begin_src emacs-lisp
+      ; paring
+      ; (electric-pair-mode 1)
+
+      (use-package smartparens
+        :ensure t
+        :hook (prog-mode text-mode))
+
+      ; vterm
+      (use-package multi-vterm
+        :ensure t
+        :config
+        (setq vterm-shell "/bin/zsh"))
+
+      (add-hook 'vterm-mode-hook (lambda () (setq-local global-hl-line-mode nil)))
+      (add-hook 'vterm-mode-hook (lambda () (display-line-numbers-mode -1)))
+#+end_src
+
+* LSP
+#+begin_src emacs-lisp
+  (require 'eglot)
+  (add-hook 'c-mode-hook #'eglot-ensure)
+  (add-hook 'c-ts-mode-hook #'eglot-ensure)
+  (add-hook 'csharp-mode-hook #'eglot-ensure)
+  (setq eglot-extend-to-xref t)
+  (setq completion-category-overrides '((eglot (styles orderless))))
+
+;;  (setq flymake-show-diagnostics-at-end-of-line t)
+;;  (setq flymake-no-changes-timeout 1.0)
+#+end_src
+
+* Snippet
+#+begin_src emacs-lisp
+(use-package yasnippet
+  :ensure t
+  :init
+  (yas-global-mode 1))
+#+end_src
+
+* Completion
+#+begin_src emacs-lisp
+      (use-package corfu
+        :ensure t
+        :init
+        (global-corfu-mode)
+        (setq corfu-auto t
+    	  corfu-quit-at-boundary t
+  	  corfu-quit-no-match t)
+        (corfu-popupinfo-mode)
+        :config
+        (define-key corfu-map (kbd "<escape>") #'corfu-quit)
+        (define-key corfu-map (kbd "<tab>") #'corfu-next)
+        (define-key corfu-map (kbd "<backtab>") #'corfu-previous)
+        (define-key corfu-map (kbd "RET") #'corfu-insert))
+#+end_src
+
+* Search
+#+begin_src emacs-lisp
+  (use-package orderless
+    :ensure t
+    :custom
+    (completion-styles '(orderless basic))
+    (completion-category-overrides '((file (styles partial-completion))))
+    (completion-pcm-leading-wildcard t)) ;; Emacs 31: partial-completion behaves like substring
+
+  (use-package consult
+    :ensure t)
+  (setq xref-show-xrefs-function #'consult-xref
+        xref-show-definitions-function #'consult-xref)
+  (setq consult-preview-key 'any)
+  (consult-customize consult-bookmark :preview-key nil)
+  
+  ; metadata for searching in M-x
+  (use-package marginalia
+    :ensure t
+    :init
+    (marginalia-mode 1))
+
+  (use-package vertico
+    :custom
+    (vertico-count 15)
+    (vertico-resize nil)
+    :init
+    (vertico-mode))
+
+  (keymap-set vertico-map "C-j" #'vertico-next)
+  (keymap-set vertico-map "C-k" #'vertico-previous)
+  (keymap-set minibuffer-local-map "<escape>" #'abort-recursive-edit)
+
+  ;; Configure directory extension.
+  (use-package vertico-directory
+    :after vertico
+    :ensure nil
+    ;; More convenient directory navigation commands
+    :bind (:map vertico-map
+                ("DEL" . vertico-directory-delete-char)
+                ("M-DEL" . vertico-directory-delete-word))
+    ;; Tidy shadowed file names
+    :hook (rfn-eshadow-update-overlay . vertico-directory-tidy))
+#+end_src
+
+* Dired
+** Dired
+#+begin_src emacs-lisp
+  (with-eval-after-load 'dired
+      (define-key dired-mode-map (kbd "h") #'dired-up-directory))
+  (with-eval-after-load 'dired
+      (define-key dired-mode-map (kbd "l") #'dired-find-file))
+#+end_src
+
+** Peep dired
+Key mapping for continuously previewing files
+#+begin_src emacs-lisp
+  (use-package peep-dired
+    :ensure t)
+#+end_src
+
+* Leetcode
+#+begin_src emacs-lisp
+  (use-package leetcode)
+  (setq leetcode-prefer-language "cpp")
+  (setq leetcode-save-solutions t)
+  (setq leetcode-directory "~/data/dev/leetcode")
+#+end_src
+
+* Other Packages
+#+begin_src emacs-lisp
+  (use-package magit)
+  (use-package pass)
+  (use-package meson-mode)
+  (use-package projectile
+    :init (projectile-mode))
+#+end_src
+
+* Other Settings
+#+begin_src emacs-lisp
+  (setq scroll-margin 20
+        scroll-conservatively 101
+        scroll-step 1)
+
+  (add-hook 'c-ts-mode-hook
+          (lambda ()
+            (setq c-ts-mode-indent-offset 4)))
+  
+  (setq backup-directory-alist '(("." . "~/.cache/emacs")))
+  (setq auto-save-file-name-transforms '((".*" "~/.cache/emacs/" t)))
+  (setq lock-file-name-transforms `((".*" "~/.emacs.d/lock/" t)))
+  (add-hook 'prog-mode-hook
+   	  (lambda ()
+     	    (add-hook 'before-save-hook #'eglot-format-buffer nil t)))
+#+end_src
