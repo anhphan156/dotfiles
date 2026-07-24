@@ -27,15 +27,12 @@ local terminal = "kitty"
 -- Or execute your favorite apps at launch like this:
 --
 hl.on("hyprland.start", function()
-	hl.exec_cmd("gentoo-pipewire-launcher")
 	hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
 
 	hl.exec_cmd("eww daemon")
 	hl.exec_cmd("eww open bar")
 
 	hl.exec_cmd("pypr &")
-
-	hl.exec_cmd("awww &")
 end)
 
 
@@ -259,7 +256,6 @@ hl.bind(mainMod .. " + F", hl.dsp.window.float({ action = "toggle" }))
 hl.bind("ALT + SPACE", hl.dsp.exec_cmd("rofi -show drun"))
 hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("pypr toggle kitty"))
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit")) -- dwindle only
-hl.bind("Print", hl.dsp.exec_cmd("/home/backspace/data/dev/scripts/screenshot.sh"))
 hl.bind("ALT + TAB", hl.dsp.window.cycle_next({ next = true }))
 
 -- Move focus with mainMod + arrow keys
