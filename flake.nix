@@ -11,8 +11,8 @@
         prev'.extend
         <| prev'.lib.composeManyExtensions [
           (import ./overlays/gdb.nix)
-          inputs.emacs-overlay.overlays.default
           inputs.neovim-nightly.overlays.default
+          inputs.emacs-overlay.overlays.default
         ];
     in {
       myDotfiles = prev.callPackage ./packages/dotfiles.nix {src = self;};
@@ -27,18 +27,8 @@
           |> prev.lib.filterAttrs (_: v: v == "regular")
           |> prev.lib.mapAttrsToList (k: _: prev.callPackage "${self}/scripts/neovim/${k}" {});
       };
-      emacs = prev.callPackage ./packages/emacs.nix {};
+      myEmacs = prev.callPackage ./packages/emacs.nix {};
     };
-
-    packages."x86_64-linux".default = let
-      pkgs = import nixpkgs {
-        system = "x86_64-linux";
-        overlays = [
-          inputs.emacs-overlay.overlays.default
-        ];
-      };
-    in
-      pkgs.callPackage ./packages/emacs.nix {};
 
     nixosModules.default = nixpkgs.lib.modules.importApply ./modules/rofi.nix inputs;
   };

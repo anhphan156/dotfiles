@@ -1,5 +1,5 @@
 #+title: Emacs
-#+PROPERTY: header-args :tangle ~/.config/emacs/init.el
+#+PROPERTY: header-args :tangle yes
 
 * Emacs Configuration
 ** Packages
@@ -131,6 +131,7 @@
   (add-hook 'c-mode-hook #'eglot-ensure)
   (add-hook 'c-ts-mode-hook #'eglot-ensure)
   (add-hook 'csharp-mode-hook #'eglot-ensure)
+  (add-hook 'nix-mode-hook #'eglot-ensure)
   (setq eglot-extend-to-xref t)
   (setq completion-category-overrides '((eglot (styles orderless))))
 
@@ -237,8 +238,14 @@ Key mapping for continuously previewing files
   (use-package magit)
   (use-package pass)
   (use-package meson-mode)
+  (use-package nix-mode
+    :mode "\\.nix\\'")
   (use-package projectile
     :init (projectile-mode))
+  (use-package direnv
+    :config
+    (direnv-mode)
+    (setq direnv-always-show-summary nil))
 #+end_src
 
 * Other Settings

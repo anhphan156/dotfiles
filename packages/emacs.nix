@@ -44,8 +44,15 @@ emacsWithPackagesFromUsePackage {
   # Optionally provide extra packages not in the configuration file.
   # This can also include extra executables to be run by Emacs (linters,
   # language servers, formatters, etc)
-  extraEmacsPackages = epkgs: [
-    epkgs.cask
-    shellcheck
-  ];
+  extraEmacsPackages = epkgs:
+    with epkgs; [
+      vterm
+      multi-vterm
+      pdf-tools
+      (treesit-grammars.with-grammars (grammars: [
+        grammars.tree-sitter-cpp
+        grammars.tree-sitter-c
+      ]))
+      shellcheck
+    ];
 }
