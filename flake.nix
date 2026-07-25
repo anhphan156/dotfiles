@@ -43,7 +43,13 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
-    emacs-overlay.url = "github:nix-community/emacs-overlay";
+    neovim-nightly = {
+      url = "github:nix-community/neovim-nightly-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    emacs-overlay = {
+      url = "github:nix-community/emacs-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 }

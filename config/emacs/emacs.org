@@ -99,6 +99,8 @@
 #+begin_src emacs-lisp
   (global-set-key (kbd "C-c s s") #'consult-line)
   (global-set-key (kbd "C-c b i") #'ibuffer)
+  (global-set-key (kbd "C-c b p") #'previous-buffer)
+  (global-set-key (kbd "C-c b n") #'next-buffer)
 #+end_src
 
 * Editor
