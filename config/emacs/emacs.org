@@ -97,13 +97,8 @@
 
 * General keymaping
 #+begin_src emacs-lisp
-  ;; (defvar leader-map (make-sparse-keymap))
-  ;; (keymap-global-set "\\" leader-map)
-  ;; (with-eval-after-load 'org
-  ;;   (define-key org-mode-map (kbd "RET") #'org-open-at-point))
-  ;; (keymap-set leader-map "c" #'comment-dwim)
-  ;; (keymap-set leader-map "w" #'save-buffer)
-
+  (global-set-key (kbd "C-c s s") #'consult-line)
+  (global-set-key (kbd "C-c b i") #'ibuffer)
 #+end_src
 
 * Editor
@@ -117,9 +112,7 @@
 
       ; vterm
       (use-package multi-vterm
-        :ensure t
-        :config
-        (setq vterm-shell "/bin/zsh"))
+        :ensure t)
 
       (add-hook 'vterm-mode-hook (lambda () (setq-local global-hl-line-mode nil)))
       (add-hook 'vterm-mode-hook (lambda () (display-line-numbers-mode -1)))
@@ -193,8 +186,6 @@
     :init
     (vertico-mode))
 
-  (keymap-set vertico-map "C-j" #'vertico-next)
-  (keymap-set vertico-map "C-k" #'vertico-previous)
   (keymap-set minibuffer-local-map "<escape>" #'abort-recursive-edit)
 
   ;; Configure directory extension.
@@ -235,17 +226,18 @@ Key mapping for continuously previewing files
 
 * Other Packages
 #+begin_src emacs-lisp
-  (use-package magit)
-  (use-package pass)
-  (use-package meson-mode)
-  (use-package nix-mode
-    :mode "\\.nix\\'")
-  (use-package projectile
-    :init (projectile-mode))
-  (use-package direnv
-    :config
-    (direnv-mode)
-    (setq direnv-always-show-summary nil))
+    (use-package magit)
+    (use-package pass)
+    (use-package meson-mode)
+    (use-package nix-mode
+      :mode "\\.nix\\'")
+    (use-package projectile
+      :init (projectile-mode)
+      (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
+    (use-package direnv
+      :config
+      (direnv-mode)
+      (setq direnv-always-show-summary nil))
 #+end_src
 
 * Other Settings

@@ -30,6 +30,14 @@
       myEmacs = prev.callPackage ./packages/emacs.nix {};
     };
 
+    packages."x86_64-linux".default = let
+      pkgs = import nixpkgs {
+        system = "x86_64-linux";
+        overlays = [self.overlays.default];
+      };
+    in
+      pkgs.myEmacs;
+
     nixosModules.default = nixpkgs.lib.modules.importApply ./modules/rofi.nix inputs;
   };
 

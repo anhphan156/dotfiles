@@ -47,7 +47,6 @@ emacsWithPackagesFromUsePackage {
   extraEmacsPackages = epkgs:
     with epkgs; [
       vterm
-      multi-vterm
       pdf-tools
       (treesit-grammars.with-grammars (grammars: [
         grammars.tree-sitter-cpp
