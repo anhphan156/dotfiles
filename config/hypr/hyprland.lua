@@ -348,7 +348,7 @@ hl.window_rule({
 hl.window_rule({
 	name = "opaque apps",
 	match = {
-		class = "librewolf|imhex",
+		class = "librewolf|imhex|org.pwmt.zathura",
 	},
 	opacity = "1.0 override 1.0 override 1.0 override",
 })

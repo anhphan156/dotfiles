@@ -77,7 +77,3 @@ builtin = "Catppuccin"
 mode = "dark"
 source = "builtin"
 wallpaper_scheme = "m3-content"
-
-[wallpaper.automation]
-enabled = true
-interval_seconds = 300

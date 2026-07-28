@@ -31,13 +31,6 @@ vim.keymap.set("v", "<leader><leader>(", "<ESC>`>a\\)<ESC>`<i\\(<ESC>",
 vim.keymap.set("v", "<leader>`", "<ESC>`>a`<ESC>`<i`<ESC>", { silent = true, desc = "wrap backtick" })
 vim.keymap.set("v", "<leader><", "<ESC>`>a><ESC>`<i<<ESC>", { silent = true, desc = "wrap triangle" })
 
--- Fugitive
-vim.keymap.set("n", "<leader>gg", ":tab G<CR>",
-	{ silent = true, desc = "Open vim fugitive" })
-vim.keymap.set("n", "<leader>gl",
-	":tab G log --oneline --decorate<CR>",
-	{ silent = true, desc = "Open vim fugitive" })
-
 -- Telescope
 vim.keymap.set("n", "<leader>fs", ":Telescope lsp_document_symbols<CR>", { silent = true, desc = "Telescope find files" })
 vim.keymap.set("n", "<leader>fr", ":Telescope lsp_references<CR>", { silent = true, desc = "Telescope find files" })
@@ -53,3 +46,6 @@ vim.keymap.set("n", "<leader>pp", ":Telescope project<CR>", { silent = true, des
 
 -- Nvimtree
 vim.keymap.set('n', '<leader>t', ':NvimTreeToggle<CR>', { silent = true, desc = "Open nvim tree" })
+
+-- Neogit
+vim.keymap.set("n", "<leader>gg", ":Neogit<CR>", { silent = true, desc = "Open Neogit" })
