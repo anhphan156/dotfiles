@@ -72,6 +72,14 @@ setup_wizard_enabled = false
     [shell.screen_corners]
     enabled = true
 
+	[shell.launcher.dmenu.entry.commands]
+	command = "fd --full-path $HOME -t f -e pdf"
+	exec = "zathura \"$HOME/{selection}\""
+	global = false
+	glyph = "terminal"
+	label = "Open Documents"
+	prefix = "doc"
+
 [theme]
 builtin = "Catppuccin"
 mode = "dark"
