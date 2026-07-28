@@ -64,6 +64,7 @@ widget_order = [ "lockscreen-login-box@eDP-1" ]
 
 [shell]
 font_family = "Anka/Coder"
+setup_wizard_enabled = false  
 
     [shell.panel]
     launcher_position = "auto"
@@ -76,3 +77,7 @@ builtin = "Catppuccin"
 mode = "dark"
 source = "builtin"
 wallpaper_scheme = "m3-content"
+
+[wallpaper.automation]
+enabled = true
+interval_seconds = 300

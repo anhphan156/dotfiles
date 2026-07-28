@@ -29,6 +29,12 @@ vim.lsp.enable('hls')
 
 vim.lsp.config('nixd', {
 	cmd = { "nixd" },
+	on_attach = lspformat.on_attach,
+	settings = {
+		formatting = {
+			command = { 'nixfmt' },
+		},
+	},
 })
 vim.lsp.enable('nixd')
 
