@@ -19,7 +19,7 @@ vim.o.scl = "yes"   -- Scroll behavior (optional, depends on use case)
 --     "t:block-blinkon500-blinkoff500-TermCursor"
 
 -- Local config
-vim.opt.exrc = true
+vim.o.exrc = true
 
 -- Clipboard
 vim.opt.clipboard = "unnamedplus"
