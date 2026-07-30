@@ -191,7 +191,7 @@ hl.config({
 
 hl.config({
 	misc = {
-		force_default_wallpaper = -1,    -- Set to 0 or 1 to disable the anime mascot wallpapers
+		force_default_wallpaper = -1, -- Set to 0 or 1 to disable the anime mascot wallpapers
 		disable_hyprland_logo   = false, -- If true disables the random hyprland logo / anime girl background. :(
 	},
 })
@@ -248,7 +248,7 @@ local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(terminal))
 local closeWindowBind = hl.bind(mainMod .. " + W", hl.dsp.window.close())
 -- closeWindowBind:set_enabled(false)
-hl.bind(mainMod .. " + Shift + M", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }))
+hl.bind(mainMod .. " + SHIFT + M", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }))
 hl.bind(mainMod .. " + F", hl.dsp.window.float({ action = "toggle" }))
 hl.bind("ALT + SPACE", hl.dsp.exec_cmd("rofi -show drun"))
 hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("pypr toggle kitty"))
