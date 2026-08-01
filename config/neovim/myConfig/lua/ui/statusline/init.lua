@@ -37,6 +37,9 @@ vim.api.nvim_set_hl(0, "MyStatusLineBorderVisual", { fg = "#ff309f", bg = "#0000
 vim.api.nvim_set_hl(0, "MyStatusLineAccentCmdLine", { fg = "#eeeeee", bg = "#3939af", bold = true })
 vim.api.nvim_set_hl(0, "MyStatusLineBorderCmdLine", { fg = "#3939af", bg = "#000000" })
 
+vim.api.nvim_set_hl(0, "MyStatusLineAccentTerminal", { fg = "#eeeeee", bg = "#3939af", bold = true })
+vim.api.nvim_set_hl(0, "MyStatusLineBorderTerminal", { fg = "#3939af", bg = "#000000" })
+
 vim.api.nvim_set_hl(0, "MyStatusLineBoxWhite", { fg = "#eeeeee", bg = "#333333" })
 vim.api.nvim_set_hl(0, "MyStatusLineBoxWhiteInv", { fg = "#333333", bg = "#000000" })
 vim.api.nvim_set_hl(0, "MyStatusLineBoxBlue", { fg = "#ababef", bg = "#333333" })
