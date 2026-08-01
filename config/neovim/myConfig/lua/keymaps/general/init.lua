@@ -6,8 +6,11 @@ vim.g.maplocalleader = " "
 vim.keymap.set("n", "<leader>w", "<ESC>:w<CR>", { silent = true, desc = "Save file" })
 vim.keymap.set("i", "jk", "<ESC>", { silent = true, desc = "Exit insert mode" })
 vim.keymap.set("n", "Y", "<ESC>Vy", { silent = true, desc = "Copy line" })
-vim.keymap.set("n", "<leader>r", ":tabnew | term<CR>", { silent = true, desc = "Open terminal" })
-vim.keymap.set("t", "jk", "<C-\\><C-n>", { silent = true, desc = "Open terminal" })
+vim.keymap.set("n", "<leader>r", "<cmd>term<CR>", { silent = true, desc = "Open terminal" })
+vim.keymap.set("t", "jk", "<C-\\><C-n>", { silent = true, desc = "Terminal normal mode" })
+
+vim.keymap.set("n", "<leader>bn", "<cmd>bnext<CR>", { silent = true, desc = "Next buffer" })
+vim.keymap.set("n", "<leader>bp", "<cmd>bprevious<CR>", { silent = true, desc = "Previous buffer" })
 
 -- Quote wrapping keymaps
 -- Quotes
@@ -46,10 +49,13 @@ vim.keymap.set("n", "<leader>fg", ":Telescope live_grep<CR>", { silent = true, d
 vim.keymap.set("n", "<leader>fb", ":Telescope current_buffer_fuzzy_find<CR>",
 	{ silent = true, desc = "Telescope buffer fuzzy finder" })
 
+vim.keymap.set("n", "<leader>bi", ":Telescope buffers<CR>", { silent = true, desc = "Telescope buffers browser" })
 vim.keymap.set("n", "<leader>xd", ":Telescope file_browser<CR>", { silent = true, desc = "Telescope file browser" })
 vim.keymap.set("n", "<leader>pp", ":Telescope project<CR>", { silent = true, desc = "Telescope project browser" })
 
+vim.keymap.set("n", "<leader>fp", ":Telescope registers<CR>", { silent = true, desc = "Telescope registers" })
 -- Nvimtree
+--
 vim.keymap.set('n', '<leader>t', ':NvimTreeToggle<CR>', { silent = true, desc = "Open nvim tree" })
 
 -- Neogit

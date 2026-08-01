@@ -6,7 +6,7 @@ telescope.setup {
 		cwd = vim.fn.getcwd(), -- Set the current directory to the root of your project
 		mappings = {
 			i = {
-				["<Esc>"] = require('telescope.actions').close,
+
 			},
 		},
 		file_ignore_patterns = {

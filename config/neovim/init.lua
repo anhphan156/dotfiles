@@ -12,6 +12,7 @@ vim.o.expandtab = false
 vim.o.scrolloff = 8 -- Keep 8 lines above and below the cursor while scrolling
 vim.o.scl = "yes"   -- Scroll behavior (optional, depends on use case)
 
+vim.opt.guicursor:append("t:ver25")
 -- vim.opt.guicursor =
 --     "r-v-c-sm:block," ..
 --     "i-ci-ve:ver25," ..
@@ -23,3 +24,6 @@ vim.o.exrc = true
 
 -- Clipboard
 vim.opt.clipboard = "unnamedplus"
+
+-- Others
+vim.opt.splitright = true
