@@ -6,7 +6,8 @@ vim.g.maplocalleader = " "
 vim.keymap.set("n", "<leader>w", "<ESC>:w<CR>", { silent = true, desc = "Save file" })
 vim.keymap.set("i", "jk", "<ESC>", { silent = true, desc = "Exit insert mode" })
 vim.keymap.set("n", "Y", "<ESC>Vy", { silent = true, desc = "Copy line" })
-vim.keymap.set("n", "<leader>r", ":tabnew | term", { silent = true, desc = "Open terminal" })
+vim.keymap.set("n", "<leader>r", ":tabnew | term<CR>", { silent = true, desc = "Open terminal" })
+vim.keymap.set("t", "jk", "<C-\\><C-n>", { silent = true, desc = "Open terminal" })
 
 -- Quote wrapping keymaps
 -- Quotes
