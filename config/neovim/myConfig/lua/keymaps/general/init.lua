@@ -11,6 +11,7 @@ vim.keymap.set("t", "jk", "<C-\\><C-n>", { silent = true, desc = "Terminal norma
 
 vim.keymap.set("n", "<leader>bn", "<cmd>bnext<CR>", { silent = true, desc = "Next buffer" })
 vim.keymap.set("n", "<leader>bp", "<cmd>bprevious<CR>", { silent = true, desc = "Previous buffer" })
+vim.keymap.set("n", "<leader>bd", "<cmd>bd<CR>", { silent = true, desc = "Delete buffer" })
 
 -- Quote wrapping keymaps
 -- Quotes

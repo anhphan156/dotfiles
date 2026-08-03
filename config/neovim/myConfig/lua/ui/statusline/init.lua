@@ -19,7 +19,7 @@ local modes = {
 	["r?"] = " CONFIRM",
 	["!"] = " SHELL",
 	["t"] = " TERM INSERT",
-	["nt"] = " TERM NORMAL",
+	["nt"] = " TERM N0RMAL",
 }
 
 local function mode()
