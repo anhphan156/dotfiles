@@ -63,7 +63,7 @@ vim.keymap.set("n", "<space>sd", ":Lspsaga peek_definition<CR>", { silent = true
 vim.keymap.set("n", "<space>sr", ":Lspsaga rename<CR>", { silent = true, desc = "rename" })
 
 -- quickfix
-vim.keymap.set("n", "<space>cc", ":make<CR>", { silent = true, desc = "make" })
+vim.keymap.set("n", "<space>cc", ":silent make!<CR>", { silent = true, desc = "make" })
 vim.keymap.set("n", "<space>co", function()
 	local qf = vim.fn.getqflist({ winid = 0 }).winid
 	if qf ~= 0 then
