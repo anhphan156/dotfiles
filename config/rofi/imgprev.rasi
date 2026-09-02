@@ -20,8 +20,8 @@ configuration {
 }
 
 window {
-    background-image: @bg;
-		fullscreen: false;
+    background-color: #aabbcc01;
+	fullscreen: false;
     border: 0;
     border-color: @x14;
     border-radius: 12px;
